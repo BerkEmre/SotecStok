@@ -38,6 +38,9 @@
             this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
             this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
             this.PageHeader = new DevExpress.XtraReports.UI.PageHeaderBand();
+            this.xrLabel5 = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrLabel7 = new DevExpress.XtraReports.UI.XRLabel();
+            this.lbl_fis_no = new DevExpress.XtraReports.UI.XRLabel();
             this.xrTable2 = new DevExpress.XtraReports.UI.XRTable();
             this.xrTableRow2 = new DevExpress.XtraReports.UI.XRTableRow();
             this.xrTableCell2 = new DevExpress.XtraReports.UI.XRTableCell();
@@ -52,14 +55,12 @@
             this.xrLabel4 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel2 = new DevExpress.XtraReports.UI.XRLabel();
             this.lbl_masa_adi = new DevExpress.XtraReports.UI.XRLabel();
+            this.pb_logo = new DevExpress.XtraReports.UI.XRPictureBox();
             this.ReportFooter = new DevExpress.XtraReports.UI.ReportFooterBand();
             this.xrLabel3 = new DevExpress.XtraReports.UI.XRLabel();
             this.lbl_odeme_tipi = new DevExpress.XtraReports.UI.XRLabel();
             this.lbl_toplam_tutar = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel10 = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrLabel5 = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrLabel7 = new DevExpress.XtraReports.UI.XRLabel();
-            this.lbl_fis_no = new DevExpress.XtraReports.UI.XRLabel();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
@@ -97,6 +98,7 @@
             // tc_urun_adi
             // 
             this.tc_urun_adi.Borders = DevExpress.XtraPrinting.BorderSide.Bottom;
+            this.tc_urun_adi.CanGrow = false;
             this.tc_urun_adi.Dpi = 254F;
             this.tc_urun_adi.Font = new System.Drawing.Font("Bahnschrift", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.tc_urun_adi.Name = "tc_urun_adi";
@@ -110,6 +112,7 @@
             // tc_miktar
             // 
             this.tc_miktar.Borders = DevExpress.XtraPrinting.BorderSide.Bottom;
+            this.tc_miktar.CanGrow = false;
             this.tc_miktar.Dpi = 254F;
             this.tc_miktar.Font = new System.Drawing.Font("Bahnschrift", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.tc_miktar.Name = "tc_miktar";
@@ -123,6 +126,7 @@
             // tc_birim_fiyat
             // 
             this.tc_birim_fiyat.Borders = DevExpress.XtraPrinting.BorderSide.Bottom;
+            this.tc_birim_fiyat.CanGrow = false;
             this.tc_birim_fiyat.Dpi = 254F;
             this.tc_birim_fiyat.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.tc_birim_fiyat.Name = "tc_birim_fiyat";
@@ -136,6 +140,7 @@
             // tc_tutar
             // 
             this.tc_tutar.Borders = DevExpress.XtraPrinting.BorderSide.Bottom;
+            this.tc_tutar.CanGrow = false;
             this.tc_tutar.Dpi = 254F;
             this.tc_tutar.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.tc_tutar.Name = "tc_tutar";
@@ -176,15 +181,55 @@
             this.xrLabel6,
             this.xrLabel4,
             this.xrLabel2,
-            this.lbl_masa_adi});
+            this.lbl_masa_adi,
+            this.pb_logo});
             this.PageHeader.Dpi = 254F;
-            this.PageHeader.HeightF = 328.5F;
+            this.PageHeader.HeightF = 630.125F;
             this.PageHeader.Name = "PageHeader";
+            // 
+            // xrLabel5
+            // 
+            this.xrLabel5.Dpi = 254F;
+            this.xrLabel5.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.xrLabel5.LocationFloat = new DevExpress.Utils.PointFloat(4.037221E-05F, 516.6249F);
+            this.xrLabel5.Name = "xrLabel5";
+            this.xrLabel5.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
+            this.xrLabel5.SizeF = new System.Drawing.SizeF(199.4978F, 50F);
+            this.xrLabel5.StylePriority.UseFont = false;
+            this.xrLabel5.StylePriority.UseTextAlignment = false;
+            this.xrLabel5.Text = "Fiş No";
+            this.xrLabel5.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            // 
+            // xrLabel7
+            // 
+            this.xrLabel7.Dpi = 254F;
+            this.xrLabel7.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.xrLabel7.LocationFloat = new DevExpress.Utils.PointFloat(199.4978F, 516.6249F);
+            this.xrLabel7.Name = "xrLabel7";
+            this.xrLabel7.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
+            this.xrLabel7.SizeF = new System.Drawing.SizeF(26.14F, 50F);
+            this.xrLabel7.StylePriority.UseFont = false;
+            this.xrLabel7.StylePriority.UseTextAlignment = false;
+            this.xrLabel7.Text = ":";
+            this.xrLabel7.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            // 
+            // lbl_fis_no
+            // 
+            this.lbl_fis_no.Dpi = 254F;
+            this.lbl_fis_no.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lbl_fis_no.LocationFloat = new DevExpress.Utils.PointFloat(225.6378F, 516.6249F);
+            this.lbl_fis_no.Name = "lbl_fis_no";
+            this.lbl_fis_no.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
+            this.lbl_fis_no.SizeF = new System.Drawing.SizeF(374.3622F, 50F);
+            this.lbl_fis_no.StylePriority.UseFont = false;
+            this.lbl_fis_no.StylePriority.UseTextAlignment = false;
+            this.lbl_fis_no.Text = "ADMIN";
+            this.lbl_fis_no.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
             // 
             // xrTable2
             // 
             this.xrTable2.Dpi = 254F;
-            this.xrTable2.LocationFloat = new DevExpress.Utils.PointFloat(0.0003498924F, 265F);
+            this.xrTable2.LocationFloat = new DevExpress.Utils.PointFloat(0.0002018611F, 566.625F);
             this.xrTable2.Name = "xrTable2";
             this.xrTable2.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow2});
@@ -257,7 +302,7 @@
             // 
             this.xrLabel1.Dpi = 254F;
             this.xrLabel1.Font = new System.Drawing.Font("Bahnschrift", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
+            this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 301.6249F);
             this.xrLabel1.Name = "xrLabel1";
             this.xrLabel1.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
             this.xrLabel1.SizeF = new System.Drawing.SizeF(599.9999F, 65F);
@@ -270,7 +315,7 @@
             // 
             this.lbl_acan_kullanici.Dpi = 254F;
             this.lbl_acan_kullanici.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lbl_acan_kullanici.LocationFloat = new DevExpress.Utils.PointFloat(225.6378F, 165F);
+            this.lbl_acan_kullanici.LocationFloat = new DevExpress.Utils.PointFloat(225.6376F, 466.6249F);
             this.lbl_acan_kullanici.Name = "lbl_acan_kullanici";
             this.lbl_acan_kullanici.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
             this.lbl_acan_kullanici.SizeF = new System.Drawing.SizeF(374.3622F, 50F);
@@ -283,7 +328,7 @@
             // 
             this.lbl_fis_acilis_tarihi.Dpi = 254F;
             this.lbl_fis_acilis_tarihi.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lbl_fis_acilis_tarihi.LocationFloat = new DevExpress.Utils.PointFloat(225.6378F, 115F);
+            this.lbl_fis_acilis_tarihi.LocationFloat = new DevExpress.Utils.PointFloat(225.6376F, 416.6249F);
             this.lbl_fis_acilis_tarihi.Name = "lbl_fis_acilis_tarihi";
             this.lbl_fis_acilis_tarihi.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
             this.lbl_fis_acilis_tarihi.SizeF = new System.Drawing.SizeF(374.3622F, 50F);
@@ -296,7 +341,7 @@
             // 
             this.xrLabel8.Dpi = 254F;
             this.xrLabel8.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.xrLabel8.LocationFloat = new DevExpress.Utils.PointFloat(199.4978F, 165F);
+            this.xrLabel8.LocationFloat = new DevExpress.Utils.PointFloat(199.4976F, 466.6249F);
             this.xrLabel8.Name = "xrLabel8";
             this.xrLabel8.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
             this.xrLabel8.SizeF = new System.Drawing.SizeF(26.14F, 50F);
@@ -309,7 +354,7 @@
             // 
             this.xrLabel6.Dpi = 254F;
             this.xrLabel6.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.xrLabel6.LocationFloat = new DevExpress.Utils.PointFloat(199.4978F, 115F);
+            this.xrLabel6.LocationFloat = new DevExpress.Utils.PointFloat(199.4976F, 416.6249F);
             this.xrLabel6.Name = "xrLabel6";
             this.xrLabel6.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
             this.xrLabel6.SizeF = new System.Drawing.SizeF(26.14F, 50F);
@@ -322,7 +367,7 @@
             // 
             this.xrLabel4.Dpi = 254F;
             this.xrLabel4.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.xrLabel4.LocationFloat = new DevExpress.Utils.PointFloat(0F, 165F);
+            this.xrLabel4.LocationFloat = new DevExpress.Utils.PointFloat(0F, 466.6249F);
             this.xrLabel4.Name = "xrLabel4";
             this.xrLabel4.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
             this.xrLabel4.SizeF = new System.Drawing.SizeF(199.4978F, 50F);
@@ -335,7 +380,7 @@
             // 
             this.xrLabel2.Dpi = 254F;
             this.xrLabel2.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.xrLabel2.LocationFloat = new DevExpress.Utils.PointFloat(0F, 115F);
+            this.xrLabel2.LocationFloat = new DevExpress.Utils.PointFloat(0F, 416.6249F);
             this.xrLabel2.Name = "xrLabel2";
             this.xrLabel2.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
             this.xrLabel2.SizeF = new System.Drawing.SizeF(199.4978F, 50F);
@@ -348,7 +393,7 @@
             // 
             this.lbl_masa_adi.Dpi = 254F;
             this.lbl_masa_adi.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lbl_masa_adi.LocationFloat = new DevExpress.Utils.PointFloat(0.0001850393F, 64.99999F);
+            this.lbl_masa_adi.LocationFloat = new DevExpress.Utils.PointFloat(4.037221E-05F, 366.6249F);
             this.lbl_masa_adi.Name = "lbl_masa_adi";
             this.lbl_masa_adi.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
             this.lbl_masa_adi.SizeF = new System.Drawing.SizeF(599.9998F, 50.00001F);
@@ -356,6 +401,15 @@
             this.lbl_masa_adi.StylePriority.UseTextAlignment = false;
             this.lbl_masa_adi.Text = "MASA ADI";
             this.lbl_masa_adi.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            // 
+            // pb_logo
+            // 
+            this.pb_logo.Dpi = 254F;
+            this.pb_logo.ImageAlignment = DevExpress.XtraPrinting.ImageAlignment.MiddleCenter;
+            this.pb_logo.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
+            this.pb_logo.Name = "pb_logo";
+            this.pb_logo.SizeF = new System.Drawing.SizeF(599.9998F, 301.6249F);
+            this.pb_logo.Sizing = DevExpress.XtraPrinting.ImageSizeMode.ZoomImage;
             // 
             // ReportFooter
             // 
@@ -421,45 +475,6 @@
             this.xrLabel10.Text = "TEŞEKKÜR EDER \r\nYİNE BEKLERİZ";
             this.xrLabel10.TextAlignment = DevExpress.XtraPrinting.TextAlignment.BottomCenter;
             // 
-            // xrLabel5
-            // 
-            this.xrLabel5.Dpi = 254F;
-            this.xrLabel5.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.xrLabel5.LocationFloat = new DevExpress.Utils.PointFloat(0.0001816749F, 215F);
-            this.xrLabel5.Name = "xrLabel5";
-            this.xrLabel5.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
-            this.xrLabel5.SizeF = new System.Drawing.SizeF(199.4978F, 50F);
-            this.xrLabel5.StylePriority.UseFont = false;
-            this.xrLabel5.StylePriority.UseTextAlignment = false;
-            this.xrLabel5.Text = "Fiş No";
-            this.xrLabel5.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            // 
-            // xrLabel7
-            // 
-            this.xrLabel7.Dpi = 254F;
-            this.xrLabel7.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.xrLabel7.LocationFloat = new DevExpress.Utils.PointFloat(199.498F, 215F);
-            this.xrLabel7.Name = "xrLabel7";
-            this.xrLabel7.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
-            this.xrLabel7.SizeF = new System.Drawing.SizeF(26.14F, 50F);
-            this.xrLabel7.StylePriority.UseFont = false;
-            this.xrLabel7.StylePriority.UseTextAlignment = false;
-            this.xrLabel7.Text = ":";
-            this.xrLabel7.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            // 
-            // lbl_fis_no
-            // 
-            this.lbl_fis_no.Dpi = 254F;
-            this.lbl_fis_no.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lbl_fis_no.LocationFloat = new DevExpress.Utils.PointFloat(225.638F, 215F);
-            this.lbl_fis_no.Name = "lbl_fis_no";
-            this.lbl_fis_no.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
-            this.lbl_fis_no.SizeF = new System.Drawing.SizeF(374.3622F, 50F);
-            this.lbl_fis_no.StylePriority.UseFont = false;
-            this.lbl_fis_no.StylePriority.UseTextAlignment = false;
-            this.lbl_fis_no.Text = "ADMIN";
-            this.lbl_fis_no.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            // 
             // rp_odeme
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
@@ -518,5 +533,6 @@
         private DevExpress.XtraReports.UI.XRLabel xrLabel5;
         private DevExpress.XtraReports.UI.XRLabel xrLabel7;
         private DevExpress.XtraReports.UI.XRLabel lbl_fis_no;
+        private DevExpress.XtraReports.UI.XRPictureBox pb_logo;
     }
 }

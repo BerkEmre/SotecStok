@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue1 = new DevExpress.XtraEditors.FormatConditionRuleValue();
-            DevExpress.XtraGrid.GridFormatRule gridFormatRule2 = new DevExpress.XtraGrid.GridFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue2 = new DevExpress.XtraEditors.FormatConditionRuleValue();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule3 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue3 = new DevExpress.XtraEditors.FormatConditionRuleValue();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule4 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue4 = new DevExpress.XtraEditors.FormatConditionRuleValue();
             this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.cmb_tahsilat_tipi = new DevExpress.XtraEditors.GridLookUpEdit();
             this.gridLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -55,21 +55,21 @@
             this.gv_tahsilat = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.button1 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.dt_evrak_tarihi = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.tb_aciklama = new System.Windows.Forms.TextBox();
-            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.cmb_odeme_tipi = new DevExpress.XtraEditors.GridLookUpEdit();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.label5 = new System.Windows.Forms.Label();
-            this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.cmb_tahsilat_tipi.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmb_cariler.Properties)).BeginInit();
@@ -320,6 +320,7 @@
             this.grid_tahsilat.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gv_tahsilat});
             this.grid_tahsilat.Click += new System.EventHandler(this.grid_tahsilat_Click);
+            this.grid_tahsilat.KeyDown += new System.Windows.Forms.KeyEventHandler(this.grid_tahsilat_KeyDown);
             // 
             // gv_tahsilat
             // 
@@ -332,28 +333,28 @@
             this.gridColumn13,
             this.gridColumn12,
             this.gridColumn14});
-            gridFormatRule1.ApplyToRow = true;
-            gridFormatRule1.Column = this.gridColumn14;
-            gridFormatRule1.ColumnApplyTo = this.gridColumn14;
-            gridFormatRule1.Name = "tedarikcide";
-            formatConditionRuleValue1.Appearance.FontStyleDelta = System.Drawing.FontStyle.Bold;
-            formatConditionRuleValue1.Appearance.Options.UseFont = true;
-            formatConditionRuleValue1.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
-            formatConditionRuleValue1.Value1 = 19;
-            gridFormatRule1.Rule = formatConditionRuleValue1;
-            gridFormatRule2.ApplyToRow = true;
-            gridFormatRule2.Column = this.gridColumn14;
-            gridFormatRule2.ColumnApplyTo = this.gridColumn14;
-            gridFormatRule2.Name = "kapandi";
-            formatConditionRuleValue2.Appearance.FontStyleDelta = System.Drawing.FontStyle.Italic;
-            formatConditionRuleValue2.Appearance.ForeColor = System.Drawing.Color.LightGray;
-            formatConditionRuleValue2.Appearance.Options.UseFont = true;
-            formatConditionRuleValue2.Appearance.Options.UseForeColor = true;
-            formatConditionRuleValue2.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
-            formatConditionRuleValue2.Value1 = 20;
-            gridFormatRule2.Rule = formatConditionRuleValue2;
-            this.gv_tahsilat.FormatRules.Add(gridFormatRule1);
-            this.gv_tahsilat.FormatRules.Add(gridFormatRule2);
+            gridFormatRule3.ApplyToRow = true;
+            gridFormatRule3.Column = this.gridColumn14;
+            gridFormatRule3.ColumnApplyTo = this.gridColumn14;
+            gridFormatRule3.Name = "tedarikcide";
+            formatConditionRuleValue3.Appearance.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            formatConditionRuleValue3.Appearance.Options.UseFont = true;
+            formatConditionRuleValue3.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
+            formatConditionRuleValue3.Value1 = 19;
+            gridFormatRule3.Rule = formatConditionRuleValue3;
+            gridFormatRule4.ApplyToRow = true;
+            gridFormatRule4.Column = this.gridColumn14;
+            gridFormatRule4.ColumnApplyTo = this.gridColumn14;
+            gridFormatRule4.Name = "kapandi";
+            formatConditionRuleValue4.Appearance.FontStyleDelta = System.Drawing.FontStyle.Italic;
+            formatConditionRuleValue4.Appearance.ForeColor = System.Drawing.Color.LightGray;
+            formatConditionRuleValue4.Appearance.Options.UseFont = true;
+            formatConditionRuleValue4.Appearance.Options.UseForeColor = true;
+            formatConditionRuleValue4.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
+            formatConditionRuleValue4.Value1 = 20;
+            gridFormatRule4.Rule = formatConditionRuleValue4;
+            this.gv_tahsilat.FormatRules.Add(gridFormatRule3);
+            this.gv_tahsilat.FormatRules.Add(gridFormatRule4);
             this.gv_tahsilat.GridControl = this.grid_tahsilat;
             this.gv_tahsilat.Name = "gv_tahsilat";
             this.gv_tahsilat.OptionsBehavior.Editable = false;
@@ -376,6 +377,15 @@
             this.gridColumn9.Visible = true;
             this.gridColumn9.VisibleIndex = 0;
             // 
+            // gridColumn4
+            // 
+            this.gridColumn4.Caption = "Evrak Tarihi";
+            this.gridColumn4.FieldName = "evrak_tarihi";
+            this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.OptionsColumn.AllowEdit = false;
+            this.gridColumn4.Visible = true;
+            this.gridColumn4.VisibleIndex = 2;
+            // 
             // gridColumn10
             // 
             this.gridColumn10.Caption = "Cari";
@@ -392,6 +402,15 @@
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 4;
+            // 
+            // gridColumn13
+            // 
+            this.gridColumn13.Caption = "Ödeme Tipi";
+            this.gridColumn13.FieldName = "odeme_tipi";
+            this.gridColumn13.Name = "gridColumn13";
+            this.gridColumn13.OptionsColumn.AllowEdit = false;
+            this.gridColumn13.Visible = true;
+            this.gridColumn13.VisibleIndex = 5;
             // 
             // gridColumn12
             // 
@@ -464,15 +483,6 @@
             this.tb_aciklama.Size = new System.Drawing.Size(272, 40);
             this.tb_aciklama.TabIndex = 70;
             // 
-            // gridColumn4
-            // 
-            this.gridColumn4.Caption = "Evrak Tarihi";
-            this.gridColumn4.FieldName = "evrak_tarihi";
-            this.gridColumn4.Name = "gridColumn4";
-            this.gridColumn4.OptionsColumn.AllowEdit = false;
-            this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 2;
-            // 
             // cmb_odeme_tipi
             // 
             this.cmb_odeme_tipi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -523,15 +533,6 @@
             this.label5.Size = new System.Drawing.Size(111, 33);
             this.label5.TabIndex = 72;
             this.label5.Text = "Ödeme Tipi";
-            // 
-            // gridColumn13
-            // 
-            this.gridColumn13.Caption = "Ödeme Tipi";
-            this.gridColumn13.FieldName = "odeme_tipi";
-            this.gridColumn13.Name = "gridColumn13";
-            this.gridColumn13.OptionsColumn.AllowEdit = false;
-            this.gridColumn13.Visible = true;
-            this.gridColumn13.VisibleIndex = 5;
             // 
             // finans_tahsilat_fisi
             // 

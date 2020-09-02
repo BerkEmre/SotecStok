@@ -95,6 +95,7 @@
             // lbl_mikta
             // 
             this.lbl_mikta.Borders = DevExpress.XtraPrinting.BorderSide.Bottom;
+            this.lbl_mikta.CanGrow = false;
             this.lbl_mikta.Dpi = 254F;
             this.lbl_mikta.Font = new System.Drawing.Font("Bahnschrift", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.lbl_mikta.LocationFloat = new DevExpress.Utils.PointFloat(290.0607F, 0F);
@@ -111,6 +112,7 @@
             // lbl_birim_fiyat
             // 
             this.lbl_birim_fiyat.Borders = DevExpress.XtraPrinting.BorderSide.Bottom;
+            this.lbl_birim_fiyat.CanGrow = false;
             this.lbl_birim_fiyat.Dpi = 254F;
             this.lbl_birim_fiyat.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.lbl_birim_fiyat.LocationFloat = new DevExpress.Utils.PointFloat(358.1143F, 0F);
@@ -127,6 +129,7 @@
             // lbl_tutar
             // 
             this.lbl_tutar.Borders = DevExpress.XtraPrinting.BorderSide.Bottom;
+            this.lbl_tutar.CanGrow = false;
             this.lbl_tutar.Dpi = 254F;
             this.lbl_tutar.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.lbl_tutar.LocationFloat = new DevExpress.Utils.PointFloat(470.6974F, 0F);
@@ -143,6 +146,7 @@
             // lbl_menu
             // 
             this.lbl_menu.Borders = DevExpress.XtraPrinting.BorderSide.Bottom;
+            this.lbl_menu.CanGrow = false;
             this.lbl_menu.Dpi = 254F;
             this.lbl_menu.Font = new System.Drawing.Font("Bahnschrift", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.lbl_menu.LocationFloat = new DevExpress.Utils.PointFloat(0F, 63.50002F);

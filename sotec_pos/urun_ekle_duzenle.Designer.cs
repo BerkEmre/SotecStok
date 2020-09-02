@@ -452,6 +452,7 @@
             this.cb_receteli.TabIndex = 56;
             this.cb_receteli.Text = "Reçeteli Ürün";
             this.cb_receteli.UseVisualStyleBackColor = true;
+            this.cb_receteli.Visible = false;
             this.cb_receteli.CheckedChanged += new System.EventHandler(this.cb_receteli_CheckedChanged);
             // 
             // cb_recete_malzemesi
@@ -464,6 +465,7 @@
             this.cb_recete_malzemesi.TabIndex = 57;
             this.cb_recete_malzemesi.Text = "Reçete Malzemesi";
             this.cb_recete_malzemesi.UseVisualStyleBackColor = true;
+            this.cb_recete_malzemesi.Visible = false;
             // 
             // label10
             // 
@@ -596,6 +598,7 @@
             this.cb_sicak_satis.TabIndex = 65;
             this.cb_sicak_satis.Text = "Sıcak Satış";
             this.cb_sicak_satis.UseVisualStyleBackColor = true;
+            this.cb_sicak_satis.Visible = false;
             // 
             // urun_ekle_duzenle
             // 

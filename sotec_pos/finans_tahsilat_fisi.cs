@@ -121,5 +121,19 @@ namespace sotec_pos
             btn_log_out.Text = "DÜZENLE";
             btn_iptal.Visible = true;
         }
+
+        private void grid_tahsilat_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Delete)
+            {
+                DialogResult dialogResult = MessageBox.Show("Silmek istediğinizden emin misiniz?", "Dikkat", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    SQL.set("UPDATE finans_tahsilat SET silindi = 1 WHERE tahsilat_id = " + gv_tahsilat.GetDataRow(gv_tahsilat.GetSelectedRows()[0])["tahsilat_id"].ToString());
+                    DataTable dt_tahsilatlar = SQL.get("SELECT ft.tahsilat_id, ft.kayit_tarihi, ft.tahsilat_tarihi, ft.tahsilat_no, ft.tutar, c.cari_adi, tahsilat_tipi = p.deger, ft.evrak_tarihi, ft.aciklama, odeme_tipi = pot.deger, ft.odeme_tipi_parametre_id FROM finans_tahsilat ft INNER JOIN cariler c ON c.cari_id = ft.cari_id INNER JOIN parametreler p ON p.parametre_id = ft.tahsilat_tipi_parametre_id INNER JOIN parametreler pot ON pot.parametre_id = ft.odeme_tipi_parametre_id WHERE ft.silindi = 0");
+                    grid_tahsilat.DataSource = dt_tahsilatlar;
+                }
+            }
+        }
     }
 }

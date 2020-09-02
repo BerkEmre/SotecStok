@@ -261,7 +261,7 @@
             // 
             this.tb_isletme.Font = new System.Drawing.Font("Bahnschrift SemiBold Condensed", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.tb_isletme.Location = new System.Drawing.Point(8, 32);
-            this.tb_isletme.MaxLength = 20;
+            this.tb_isletme.MaxLength = 50;
             this.tb_isletme.Name = "tb_isletme";
             this.tb_isletme.Size = new System.Drawing.Size(345, 40);
             this.tb_isletme.TabIndex = 37;
@@ -437,6 +437,7 @@
             this.gridMasaKapat.TabIndex = 35;
             this.gridMasaKapat.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvMasaKapat});
+            this.gridMasaKapat.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gridMasaKapat_KeyDown);
             // 
             // gvMasaKapat
             // 
@@ -475,6 +476,7 @@
             this.groupBox7.TabIndex = 42;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "İKRAM SEÇENEKLERİ";
+            this.groupBox7.Visible = false;
             // 
             // button8
             // 

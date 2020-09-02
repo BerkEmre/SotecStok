@@ -119,6 +119,12 @@ namespace sotec_pos
                 return;
             }
 
+            if (tb_barkod.Text.Length <= 0)
+            {
+                new mesaj("Barkod giriniz!").ShowDialog();
+                return;
+            }
+
             if (Convert.ToInt32(SQL.get("SELECT COUNT(*) FROM urunler WHERE silindi = 0 AND barkod = '" + tb_barkod.Text + "' AND urun_id != " + urun_id).Rows[0][0]) != 0 && tb_barkod.Text != "")
             {
                 new mesaj("Barkod başka üründe kullanılmaktadır!").ShowDialog();

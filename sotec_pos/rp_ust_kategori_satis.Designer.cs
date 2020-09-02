@@ -220,7 +220,7 @@
             this.BottomMargin,
             this.ReportHeader});
             this.Dpi = 254F;
-            this.Margins = new System.Drawing.Printing.Margins(50, 50, 25, 25);
+            this.Margins = new System.Drawing.Printing.Margins(49, 49, 25, 25);
             this.PageHeight = 800;
             this.PageWidth = 800;
             this.PaperKind = System.Drawing.Printing.PaperKind.Custom;

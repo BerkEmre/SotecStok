@@ -1101,7 +1101,12 @@ namespace sotec_pos
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            if(text_fisno.Text.Length <= 0)
+            fis_getir();
+        }
+
+        private void fis_getir()
+        {
+            if (text_fisno.Text.Length <= 0)
             {
                 new mesaj("Fiş No Giriniz!").ShowDialog();
                 return;
@@ -1116,22 +1121,22 @@ namespace sotec_pos
 
             int fis_no = 0;
             int.TryParse(text_fisno.Text, out fis_no);
-            if(fis_no == 0)
+            if (fis_no == 0)
             {
                 new mesaj("Geçerli bir fiş no giriniz!").ShowDialog();
                 return;
             }
-            
+
             dt_adisyon = SQL.get("SELECT adisyon_id FROM adisyon WHERE adisyon_id = " + fis_no);
 
-            if(dt_adisyon.Rows.Count <= 0)
+            if (dt_adisyon.Rows.Count <= 0)
             {
                 new mesaj("Girdiğiniz fiş no için fiş bulunamadı!").ShowDialog();
                 return;
             }
             SQL.set("UPDATE adisyon SET kapandi = 0 WHERE adisyon_id = " + fis_no);
             DataTable dt_odemeler = SQL.get("SELECT fh.finans_hareket_id, fh.miktar, odeme_tipi = p.deger FROM finans_hareket fh INNER JOIN parametreler p ON p.parametre_id = fh.hareket_tipi_parametre_id WHERE fh.silindi = 0 AND hareket_tipi_parametre_id IN (25, 26, 27, 59) AND referans_id = " + dt_adisyon.Rows[0]["adisyon_id"]);
-            grid_odemeler.DataSource = dt_odemeler; 
+            grid_odemeler.DataSource = dt_odemeler;
             DataTable dt_adisyon_kalem = SQL.get("SELECT ak.kayit_tarihi, ad_soyad = kl.ad + ' ' + kl.soyad, ak.adisyon_id ,u.hedef_id, u.fiyat, ak.odendi, ak.adisyon_kalem_id, u.urun_adi, ak.miktar, ak.ikram_miktar, tutar = CASE ak.menu_id WHEN 0 THEN (ak.miktar - ak.ikram_miktar) * u.fiyat ELSE ak.fiyat END, olcu_birimi = p.deger, ak.durum_parametre_id, durum = dr.deger, mn.menu FROM adisyon_kalem ak INNER JOIN urunler u ON u.urun_id = ak.urun_id INNER JOIN parametreler p ON p.parametre_id = u.olcu_birimi_parametre_id INNER JOIN parametreler dr ON dr.parametre_id = ak.durum_parametre_id LEFT OUTER JOIN kullanicilar kl ON kl.kullanici_id = ak.kaydeden_kullanici_id LEFT OUTER JOIN menuler mn ON mn.menu_id = ak.menu_id WHERE ak.silindi = 0 AND ak.adisyon_id = " + dt_adisyon.Rows[0]["adisyon_id"] + " ORDER by ak.odendi");
             grid_adisyon.DataSource = dt_adisyon_kalem;
             tb_fis_no.Text = fis_no.ToString();
@@ -1147,6 +1152,14 @@ namespace sotec_pos
 
             finans_satis_fatura f = new finans_satis_fatura();
             f.ShowDialog();
+        }
+
+        private void text_fisno_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                fis_getir();
+            }
         }
     }
 }

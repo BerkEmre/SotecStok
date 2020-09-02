@@ -70,6 +70,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tb_taksit = new System.Windows.Forms.NumericUpDown();
+            this.label14 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
@@ -96,8 +98,6 @@
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.label9 = new System.Windows.Forms.Label();
-            this.tb_taksit = new System.Windows.Forms.NumericUpDown();
-            this.label14 = new System.Windows.Forms.Label();
             this.gb_fatura_kalem.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tb_toplam)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_kdv)).BeginInit();
@@ -110,11 +110,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.grid_fatura_kalem)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gv_fatura_kalem)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tb_taksit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grid_fatura)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gv_fatura)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmb_cariler.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1View)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tb_taksit)).BeginInit();
             this.SuspendLayout();
             // 
             // gridColumn5
@@ -221,6 +221,7 @@
             // 
             // tb_barkod
             // 
+            this.tb_barkod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_barkod.Font = new System.Drawing.Font("Bahnschrift SemiBold Condensed", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.tb_barkod.Location = new System.Drawing.Point(85, 28);
             this.tb_barkod.Name = "tb_barkod";
@@ -649,6 +650,47 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Fatura Ekle/Düzenle";
             // 
+            // tb_taksit
+            // 
+            this.tb_taksit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.tb_taksit.Font = new System.Drawing.Font("Bahnschrift SemiBold Condensed", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.tb_taksit.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.tb_taksit.Location = new System.Drawing.Point(160, 167);
+            this.tb_taksit.Maximum = new decimal(new int[] {
+            9999999,
+            0,
+            0,
+            0});
+            this.tb_taksit.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.tb_taksit.Name = "tb_taksit";
+            this.tb_taksit.Size = new System.Drawing.Size(272, 40);
+            this.tb_taksit.TabIndex = 68;
+            this.tb_taksit.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label14
+            // 
+            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Bahnschrift Condensed", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label14.ForeColor = System.Drawing.Color.DimGray;
+            this.label14.Location = new System.Drawing.Point(30, 168);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(124, 33);
+            this.label14.TabIndex = 69;
+            this.label14.Text = "Taksit Sayısı";
+            // 
             // button4
             // 
             this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -961,47 +1003,6 @@
             this.label9.TabIndex = 44;
             this.label9.Text = "Cari";
             // 
-            // tb_taksit
-            // 
-            this.tb_taksit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.tb_taksit.Font = new System.Drawing.Font("Bahnschrift SemiBold Condensed", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.tb_taksit.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-            this.tb_taksit.Location = new System.Drawing.Point(160, 167);
-            this.tb_taksit.Maximum = new decimal(new int[] {
-            9999999,
-            0,
-            0,
-            0});
-            this.tb_taksit.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.tb_taksit.Name = "tb_taksit";
-            this.tb_taksit.Size = new System.Drawing.Size(272, 40);
-            this.tb_taksit.TabIndex = 68;
-            this.tb_taksit.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // label14
-            // 
-            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Bahnschrift Condensed", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label14.ForeColor = System.Drawing.Color.DimGray;
-            this.label14.Location = new System.Drawing.Point(30, 168);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(124, 33);
-            this.label14.TabIndex = 69;
-            this.label14.Text = "Taksit Sayısı";
-            // 
             // finans_satis_fatura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1029,11 +1030,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.gv_fatura_kalem)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tb_taksit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grid_fatura)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gv_fatura)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmb_cariler.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1View)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tb_taksit)).EndInit();
             this.ResumeLayout(false);
 
         }

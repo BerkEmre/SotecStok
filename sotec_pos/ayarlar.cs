@@ -187,6 +187,26 @@ namespace sotec_pos
             a.ShowDialog();
         }
 
+        private void gridMasaKapat_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                DialogResult dialogResult = MessageBox.Show("Silmek istediğinizden emin misiniz?", "Dikkat", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    if (gvMasaKapat.SelectedRowsCount <= 0)
+                        return;
+
+                    int donusum_id = Convert.ToInt32(gvMasaKapat.GetDataRow(gvMasaKapat.GetSelectedRows()[0])["parametre_id"]);
+
+                    SQL.set("UPDATE parametreler SET silindi = 1 WHERE parametre_id = " + donusum_id);
+
+                    DataTable dt_masa_kapat = SQL.get("SELECT * FROM parametreler WHERE silindi = 0 AND tip = 'masa_kapat'");
+                    gridMasaKapat.DataSource = dt_masa_kapat;
+                }
+            }
+        }
+
         private void button8_Click(object sender, EventArgs e)
         {
             ayarlar_deger a = new ayarlar_deger(0, "ikram_sebep");

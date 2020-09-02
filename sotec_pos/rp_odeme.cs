@@ -17,8 +17,10 @@ namespace sotec_pos
             try { text = System.IO.File.ReadAllText(@"firma_bilgi.txt"); } catch { text = ""; }
             xrLabel1.Text = text;
 
+            pb_logo.ImageUrl = "firma_logo.png";
+
             DataTable dt_adisyon_kalem = SQL.get("SELECT u.fiyat, kullanici = k.ad + ' ' + k.soyad, a.kayit_tarihi, a.adisyon_id, masa_adi = ISNULL(m.masa_adi, 'SELF SERVİS'), ak.adisyon_kalem_id, u.urun_adi, ak.miktar, ak.ikram_miktar, tutar = (ak.miktar - ak.ikram_miktar) * u.fiyat, olcu_birimi = p.deger, ak.durum_parametre_id, durum = dr.deger FROM adisyon_kalem ak INNER JOIN urunler u ON u.urun_id = ak.urun_id INNER JOIN parametreler p ON p.parametre_id = u.olcu_birimi_parametre_id INNER JOIN parametreler dr ON dr.parametre_id = ak.durum_parametre_id INNER JOIN adisyon a ON a.adisyon_id = ak.adisyon_id LEFT OUTER JOIN masalar m ON m.masa_id = a.masa_id INNER JOIN kullanicilar k ON k.kullanici_id = ak.kaydeden_kullanici_id WHERE ak.silindi = 0 AND ak.adisyon_id = " + adisyon_id);
-            lbl_masa_adi.Text = dt_adisyon_kalem.Rows[0]["masa_adi"].ToString();
+            lbl_masa_adi.Text = "Perakende Satış";
             lbl_acan_kullanici.Text = dt_adisyon_kalem.Rows[0]["kullanici"].ToString();
             lbl_fis_acilis_tarihi.Text = dt_adisyon_kalem.Rows[0]["kayit_tarihi"].ToString();
             lbl_fis_no.Text = adisyon_id.ToString();

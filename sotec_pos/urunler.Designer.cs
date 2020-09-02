@@ -267,6 +267,7 @@
             this.button3.TabIndex = 19;
             this.button3.Text = "Üretim Tanımı";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Visible = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
@@ -305,6 +306,7 @@
             this.button7.TabIndex = 23;
             this.button7.Text = "Üretim Fişi";
             this.button7.UseVisualStyleBackColor = false;
+            this.button7.Visible = false;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // button5
@@ -324,6 +326,7 @@
             this.button5.TabIndex = 24;
             this.button5.Text = "Kampanya";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Visible = false;
             this.button5.Click += new System.EventHandler(this.button5_Click_1);
             // 
             // urunler

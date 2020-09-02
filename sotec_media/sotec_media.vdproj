@@ -1209,12 +1209,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_56654D5613140FE270F33C09AB9A4B2A"
-        "OwnerKey" = "8:_34D20B689446492DA2502ABBC1A184E3"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_5727693A1B0C49379B14A071F16BBFD9"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -2309,6 +2303,12 @@
         {
         "MsmKey" = "8:_B0C69913B4244056808FFCE0CE9D6FFD"
         "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B1C6E35391CF17062DA2589E4EFDB8C1"
+        "OwnerKey" = "8:_34D20B689446492DA2502ABBC1A184E3"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -4810,7 +4810,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_56654D5613140FE270F33C09AB9A4B2A"
+        "OwnerKey" = "8:_B1C6E35391CF17062DA2589E4EFDB8C1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -7381,37 +7381,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_56654D5613140FE270F33C09AB9A4B2A"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_56654D5613140FE270F33C09AB9A4B2A"
-                    {
-                    "Name" = "8:EntityFramework.DLL"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:EntityFramework.DLL"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_A64C08EDA3E84600A4E793C9D0AD2F6E"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5727693A1B0C49379B14A071F16BBFD9"
@@ -10400,6 +10369,37 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_B1C6E35391CF17062DA2589E4EFDB8C1"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_B1C6E35391CF17062DA2589E4EFDB8C1"
+                    {
+                    "Name" = "8:EntityFramework.DLL"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:EntityFramework.DLL"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_A64C08EDA3E84600A4E793C9D0AD2F6E"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_B3129FF2BF5C4669B7402BC4EA96C362"
             {
             "AssemblyRegister" = "3:1"
@@ -12869,8 +12869,8 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:sotec_media"
-        "ProductCode" = "8:{4B4EB5D9-7CE4-4576-B946-45703A6616F2}"
+        "ProductName" = "8:sotec_stok"
+        "ProductCode" = "8:{5F40769C-FEDE-44AD-82B1-A6402244A5C0}"
         "PackageCode" = "8:{F1B5C32B-8C40-4A54-8D50-260666F6DADB}"
         "UpgradeCode" = "8:{A8527274-2DA1-4B40-BD57-CCC4A3E6C8C7}"
         "AspNetVersion" = "8:4.0.30319.0"
