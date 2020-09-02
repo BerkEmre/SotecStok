@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace sotec_pos
 {
@@ -19,11 +15,13 @@ namespace sotec_pos
 
         public static bool baglanti_test()
         {
-            
-            try {
+
+            try
+            {
                 text = System.IO.File.ReadAllText(@"constr.txt");
                 con = new SqlConnection(@text);
-                SQL.get("SELECT * FROM kullanicilar"); return true; }
+                SQL.get("SELECT * FROM kullanicilar"); return true;
+            }
             catch { return false; }
         }
 

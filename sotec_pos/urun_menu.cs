@@ -1,17 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace sotec_pos
 {
-    public partial class urun_menu: Form
+    public partial class urun_menu : Form
     {
         int secili_urun_grubu_id = 0, secili_menu_id = 0;
 
@@ -40,7 +33,7 @@ namespace sotec_pos
             DataTable dt_urunler = SQL.get("SELECT * FROM urunler WHERE silindi = 0 AND menu_aktif = 1");
             cmb_urun.Properties.DataSource = dt_urunler;
 
-            if(dt_urunler.Rows.Count <= 0)
+            if (dt_urunler.Rows.Count <= 0)
             {
                 new mesaj("Önce ürün giriniz!").ShowDialog();
                 this.Close();
@@ -49,7 +42,7 @@ namespace sotec_pos
 
         private void btn_log_out_Click(object sender, EventArgs e)
         {
-            if(tb_urun_grubu.Text.Length <= 0)
+            if (tb_urun_grubu.Text.Length <= 0)
             {
                 new mesaj("Ürün grubu giriniz!").ShowDialog();
                 return;
@@ -61,7 +54,7 @@ namespace sotec_pos
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if(secili_urun_grubu_id == 0)
+            if (secili_urun_grubu_id == 0)
             {
                 new mesaj("Ürün grubu seçiniz!").ShowDialog();
                 return;
@@ -79,8 +72,8 @@ namespace sotec_pos
                 return;
             }
 
-            SQL.set("INSERT INTO urun_grubu_urunleri (kaydeden_kullanici_id, urun_grubu_id, urun_id) VALUES (" + SQL.kullanici_id + ", " + secili_urun_grubu_id + ", " + cmb_urun.EditValue + ")"); 
-            
+            SQL.set("INSERT INTO urun_grubu_urunleri (kaydeden_kullanici_id, urun_grubu_id, urun_id) VALUES (" + SQL.kullanici_id + ", " + secili_urun_grubu_id + ", " + cmb_urun.EditValue + ")");
+
             DataTable dt_urun_grubu_urunler = SQL.get("SELECT ugu.urun_grubu_urun_id, u.urun_adi, u.urun_id FROM urun_grubu_urunleri ugu INNER JOIN urunler u ON u.urun_id = ugu.urun_id WHERE ugu.silindi = 0 AND ugu.urun_grubu_id = " + secili_urun_grubu_id);
             grid_urunler.DataSource = dt_urun_grubu_urunler;
         }

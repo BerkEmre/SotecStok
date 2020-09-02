@@ -1,8 +1,5 @@
-﻿using System;
-using System.Drawing;
-using System.Collections;
-using System.ComponentModel;
-using DevExpress.XtraReports.UI;
+﻿using DevExpress.XtraReports.UI;
+using System;
 using System.Data;
 
 namespace sotec_pos
@@ -12,7 +9,7 @@ namespace sotec_pos
         public rp_masa_grubuna_gore_satislar(DateTime tarih1, DateTime tarih2)
         {
             InitializeComponent();
-            
+
             lbl_tarih.Text = tarih1.Day + "." + tarih1.Month + "." + tarih1.Year + "-" + tarih2.Day + "." + tarih2.Month + "." + tarih2.Year;
             DataTable dt = SQL.get(" SELECT " +
                                    "     mk.masa_kategori, " +

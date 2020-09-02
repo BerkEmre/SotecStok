@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Input;
 
 namespace sotec_pos
 {
@@ -86,13 +79,13 @@ namespace sotec_pos
             if (gv_hedef.SelectedRowsCount <= 0)
                 return;
 
-            if(e.KeyCode == Keys.Delete)
+            if (e.KeyCode == Keys.Delete)
             {
                 DialogResult dialogResult = MessageBox.Show("Silmek istediğinizden emin misiniz?", "Dikkat", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
                     DataTable dtu = SQL.get("SELECT * FROM urunler WHERE silindi = 0 AND hedef_id = " + gv_hedef.GetDataRow(gv_hedef.GetSelectedRows()[0])["hedef_id"].ToString());
-                    if(dtu.Rows.Count > 0)
+                    if (dtu.Rows.Count > 0)
                     {
                         new mesaj("Bu hedefe gidecek ürünler var hedef silinemez!").ShowDialog();
                         return;
@@ -162,7 +155,7 @@ namespace sotec_pos
 
         private void grid_donusumler_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Delete)
+            if (e.KeyCode == Keys.Delete)
             {
                 DialogResult dialogResult = MessageBox.Show("Silmek istediğinizden emin misiniz?", "Dikkat", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)

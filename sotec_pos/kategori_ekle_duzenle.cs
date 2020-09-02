@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace sotec_pos
@@ -30,7 +24,7 @@ namespace sotec_pos
 
         private void kategori_ekle_duzenle_Load(object sender, EventArgs e)
         {
-            if(kategori_id != 0)
+            if (kategori_id != 0)
             {
                 DataTable dt = SQL.get("SELECT * FROM kategoriler WHERE silindi = 0 AND kategori_id = " + kategori_id);
 
@@ -44,14 +38,14 @@ namespace sotec_pos
 
         private void btn_log_out_Click(object sender, EventArgs e)
         {
-            if(tb_kategori_adi.Text.Length <= 0)
+            if (tb_kategori_adi.Text.Length <= 0)
             {
                 new mesaj("Kategori Adı giriniz!").ShowDialog();
                 return;
             }
 
-            if(kategori_id == 0)
-                SQL.set("INSERT INTO kategoriler (ust_kategori_id, kategori_adi, menude_gosterilsin, sira) VALUES (" + ust_kategori_id + ", '" + tb_kategori_adi.Text + "', " + (cb_menude_goster.Checked ? 1:0) + ", " + tb_maas.Value + ")");
+            if (kategori_id == 0)
+                SQL.set("INSERT INTO kategoriler (ust_kategori_id, kategori_adi, menude_gosterilsin, sira) VALUES (" + ust_kategori_id + ", '" + tb_kategori_adi.Text + "', " + (cb_menude_goster.Checked ? 1 : 0) + ", " + tb_maas.Value + ")");
             else
                 SQL.set("UPDATE kategoriler SET kategori_adi = '" + tb_kategori_adi.Text + "', menude_gosterilsin = " + (cb_menude_goster.Checked ? 1 : 0) + ", sira = " + tb_maas.Value + " WHERE kategori_id = " + kategori_id);
             this.Close();

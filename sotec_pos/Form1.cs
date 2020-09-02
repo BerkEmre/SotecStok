@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Deployment.Application;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace sotec_pos
@@ -119,7 +114,8 @@ namespace sotec_pos
 
             label2.Text = Program.GetMacAddress();
 
-            try {
+            try
+            {
                 lbl_versiyon.Text = ApplicationDeployment.CurrentDeployment.CurrentVersion.Major.ToString();
                 lbl_versiyon.Text += ".";
                 lbl_versiyon.Text += ApplicationDeployment.CurrentDeployment.CurrentVersion.Minor.ToString();
@@ -127,12 +123,13 @@ namespace sotec_pos
                 lbl_versiyon.Text += ApplicationDeployment.CurrentDeployment.CurrentVersion.Build.ToString();
                 lbl_versiyon.Text += ".";
                 lbl_versiyon.Text += ApplicationDeployment.CurrentDeployment.CurrentVersion.Revision.ToString();
-            } catch { lbl_versiyon.Text = "DEBUG"; }
+            }
+            catch { lbl_versiyon.Text = "DEBUG"; }
         }
 
         private void tb_pass_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
                 login();
             }
@@ -150,7 +147,8 @@ namespace sotec_pos
             try
             {
                 dt = SQL.get("SELECT * FROM kullanicilar WHERE silindi = 0 AND sifre = '" + tb_pass.Text + "'");
-            } catch { new mesaj("Veri tabanı bağlantısında sorun var!").ShowDialog(); return; }
+            }
+            catch { new mesaj("Veri tabanı bağlantısında sorun var!").ShowDialog(); return; }
 
             if (dt.Rows.Count <= 0)
             {

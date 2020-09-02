@@ -1,15 +1,8 @@
-﻿using DevExpress.Utils.Serializing;
-using DevExpress.XtraGrid.Views.Grid;
-using DevExpress.XtraReports.UI;
+﻿using DevExpress.XtraReports.UI;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace sotec_pos
@@ -63,7 +56,7 @@ namespace sotec_pos
                 lbl_ad_soyad.Visible = tb_ad_soyad.Visible = true;
 
                 DataTable dt_adisyon1 = SQL.get("SELECT adisyon_id FROM adisyon WHERE silindi = 0 AND kapandi = 0 AND masa_id = " + masa_id);
-                if(dt_adisyon1.Rows.Count != 0)
+                if (dt_adisyon1.Rows.Count != 0)
                 {
                     DataTable dt_odemeler = SQL.get("SELECT fh.finans_hareket_id, fh.miktar, odeme_tipi = p.deger FROM finans_hareket fh INNER JOIN parametreler p ON p.parametre_id = fh.hareket_tipi_parametre_id WHERE fh.silindi = 0 AND hareket_tipi_parametre_id IN (25, 26, 27, 59) AND referans_id = " + dt_adisyon1.Rows[0]["adisyon_id"]);
                     grid_odemeler.DataSource = dt_odemeler;
@@ -72,7 +65,8 @@ namespace sotec_pos
             if (masa_id == -1)//paket servis
             {
                 button6.Visible = false;
-                /*cmb_adres.Visible = */btn_nakit.Visible = btn_kredi.Visible = btn_yfisi.Visible = btn_indirim.Visible = tb_tutar.Visible = grid_odemeler.Visible = btn_top_fiyat.Visible/* = btn_musteri_gecmisi.Visible*/ = true;
+                /*cmb_adres.Visible = */
+                btn_nakit.Visible = btn_kredi.Visible = btn_yfisi.Visible = btn_indirim.Visible = tb_tutar.Visible = grid_odemeler.Visible = btn_top_fiyat.Visible/* = btn_musteri_gecmisi.Visible*/ = true;
                 /*lbl_ad_soyad.Visible = tb_ad_soyad.Visible = lbl_telefon.Visible = tb_telefon.Visible = tb_adres.Visible = true;*/
 
                 dt_aresler = SQL.get("SELECT parametre_id = 1, deger = 'Adres 1' UNION ALL SELECT parametre_id = 2, deger = 'Adres 2' UNION ALL SELECT parametre_id = 3, deger = 'Adres 3'");
@@ -109,7 +103,7 @@ namespace sotec_pos
                 DataTable dt_adisyon_kalem = SQL.get("SELECT ak.kayit_tarihi, ad_soyad = kl.ad + ' ' + kl.soyad, ak.adisyon_id ,u.hedef_id, u.fiyat, ak.odendi, ak.adisyon_kalem_id, u.urun_adi, ak.miktar, ak.ikram_miktar, tutar = CASE ak.menu_id WHEN 0 THEN (ak.miktar - ak.ikram_miktar) * u.fiyat ELSE ak.fiyat END, olcu_birimi = p.deger, ak.durum_parametre_id, durum = dr.deger, mn.menu FROM adisyon_kalem ak INNER JOIN urunler u ON u.urun_id = ak.urun_id INNER JOIN parametreler p ON p.parametre_id = u.olcu_birimi_parametre_id INNER JOIN parametreler dr ON dr.parametre_id = ak.durum_parametre_id LEFT OUTER JOIN kullanicilar kl ON kl.kullanici_id = ak.kaydeden_kullanici_id LEFT OUTER JOIN menuler mn ON mn.menu_id = ak.menu_id WHERE ak.silindi = 0 AND ak.adisyon_id = " + dt_adisyon.Rows[0]["adisyon_id"] + " ORDER by ak.odendi");
                 grid_adisyon.DataSource = dt_adisyon_kalem;
 
-                if(dt_adisyon.Rows[0]["kurye"].ToString().Length > 2)
+                if (dt_adisyon.Rows[0]["kurye"].ToString().Length > 2)
                 {
                     btn_kurye_sec.Text = dt_adisyon.Rows[0]["kurye"].ToString();
                 }
@@ -149,13 +143,13 @@ namespace sotec_pos
 
         private void grid_urun_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void btn_adisyon_Click(object sender, EventArgs e)
         {
             DataTable dt_adisyon = SQL.get("SELECT adisyon_id FROM adisyon WHERE silindi = 0 AND kapandi = 0 AND masa_id = " + masa_id);
-            if(dt_adisyon.Rows.Count == 0)
+            if (dt_adisyon.Rows.Count == 0)
             {
                 SQL.set("INSERT INTO adisyon (masa_id) VALUES (" + masa_id + ")");
 
@@ -182,8 +176,8 @@ namespace sotec_pos
         {
             if (tv_adisyon.SelectedRowsCount <= 0)
                 return;
-            
-            if(Convert.ToInt32(tv_adisyon.GetDataRow(tv_adisyon.GetSelectedRows()[0])["durum_parametre_id"]) == 51)
+
+            if (Convert.ToInt32(tv_adisyon.GetDataRow(tv_adisyon.GetSelectedRows()[0])["durum_parametre_id"]) == 51)
             {
                 if (!(SQL.yetki_kontrol(30) || SQL.yetki_kontrol(15)))
                 {
@@ -200,7 +194,7 @@ namespace sotec_pos
                 }
             }
 
-            if(Convert.ToInt32(tv_adisyon.GetDataRow(tv_adisyon.GetSelectedRows()[0])["odendi"]) != 0)
+            if (Convert.ToInt32(tv_adisyon.GetDataRow(tv_adisyon.GetSelectedRows()[0])["odendi"]) != 0)
             {
                 new mesaj("Ödenmiş kalem iptal edilemez!").Show();
                 return;
@@ -238,7 +232,7 @@ namespace sotec_pos
 
             if (tv_adisyon.SelectedRowsCount <= 0)
                 return;
-            
+
             pos_masa_urun_ikram p = new pos_masa_urun_ikram(Convert.ToInt32(tv_adisyon.GetDataRow(tv_adisyon.GetSelectedRows()[0])["adisyon_kalem_id"]));
             p.FormClosing += P_FormClosing;
             p.Show();
@@ -348,13 +342,13 @@ namespace sotec_pos
             for (int i = 0; i < tv_adisyon.RowCount; i++)
             {
                 dr = tv_adisyon.GetDataRow(i);
-                
+
                 if (Convert.ToInt32(dr["durum_parametre_id"]) == 51)
                 {
                     DataTable dt_hedef = SQL.get("SELECT * FROM hedef WHERE hedef_id = " + dr["hedef_id"]);
                     if (Convert.ToInt32(dt_hedef.Rows[0]["hedefte_yazdir"]) == 1)
                     {
-                        if(!hedef_ids.Exists(x => x == Convert.ToInt32(dr["hedef_id"])))
+                        if (!hedef_ids.Exists(x => x == Convert.ToInt32(dr["hedef_id"])))
                         {
                             hedef_ids.Add(Convert.ToInt32(dr["hedef_id"]));
                             if (SQL.get("SELECT * FROM adisyon_kalem ak INNER JOIN urunler u ON u.urun_id = ak.urun_id AND u.hedef_id = " + dr["hedef_id"] + " WHERE ak.silindi = 0 AND ak.durum_parametre_id = 51 AND ak.adisyon_id = " + dr["adisyon_id"]).Rows.Count > 0)
@@ -378,7 +372,7 @@ namespace sotec_pos
             DataTable dt_adisyon_kalem = SQL.get("SELECT ak.kayit_tarihi, u.fiyat, ad_soyad = kl.ad + ' ' + kl.soyad, ak.adisyon_id ,u.hedef_id, ak.odendi, ak.adisyon_kalem_id, u.urun_adi, ak.miktar, ak.ikram_miktar, tutar = CASE ak.menu_id WHEN 0 THEN (ak.miktar - ak.ikram_miktar) * u.fiyat ELSE ak.fiyat END, olcu_birimi = p.deger, ak.durum_parametre_id, durum = dr.deger, mn.menu FROM adisyon_kalem ak INNER JOIN urunler u ON u.urun_id = ak.urun_id INNER JOIN parametreler p ON p.parametre_id = u.olcu_birimi_parametre_id INNER JOIN parametreler dr ON dr.parametre_id = ak.durum_parametre_id LEFT OUTER JOIN kullanicilar kl ON kl.kullanici_id = ak.kaydeden_kullanici_id LEFT OUTER JOIN menuler mn ON mn.menu_id = ak.menu_id WHERE ak.silindi = 0 AND ak.adisyon_id = " + dt_adisyon.Rows[0]["adisyon_id"] + " ORDER by ak.odendi");
             grid_adisyon.DataSource = dt_adisyon_kalem;
 
-            if(masa_id != 0 && masa_id != -1)
+            if (masa_id != 0 && masa_id != -1)
             {
                 this.Close();
                 p.Close();
@@ -768,7 +762,7 @@ namespace sotec_pos
                 //}
                 dt_secili.Rows.Clear();
 
-                adisyon_id = Convert.ToInt32(dt_adisyon.Rows[0]["adisyon_id"]); 
+                adisyon_id = Convert.ToInt32(dt_adisyon.Rows[0]["adisyon_id"]);
                 DataTable dt_adisyon_kalem = SQL.get("SELECT ak.kayit_tarihi, u.fiyat, ad_soyad = kl.ad + ' ' + kl.soyad, ak.adisyon_id ,u.hedef_id, ak.odendi, ak.adisyon_kalem_id, u.urun_adi, ak.miktar, ak.ikram_miktar, tutar = CASE ak.menu_id WHEN 0 THEN (ak.miktar - ak.ikram_miktar) * u.fiyat ELSE ak.fiyat END, olcu_birimi = p.deger, ak.durum_parametre_id, durum = dr.deger, mn.menu FROM adisyon_kalem ak INNER JOIN urunler u ON u.urun_id = ak.urun_id INNER JOIN parametreler p ON p.parametre_id = u.olcu_birimi_parametre_id INNER JOIN parametreler dr ON dr.parametre_id = ak.durum_parametre_id LEFT OUTER JOIN kullanicilar kl ON kl.kullanici_id = ak.kaydeden_kullanici_id LEFT OUTER JOIN menuler mn ON mn.menu_id = ak.menu_id WHERE ak.silindi = 0 AND ak.adisyon_id = " + dt_adisyon.Rows[0]["adisyon_id"] + " ORDER by ak.odendi");
                 //DataTable dt_adisyon_kalem = SQL.get("SELECT ak.odenen_miktar, u.fiyat, ak.odendi, ak.adisyon_kalem_id, u.urun_adi, ak.miktar, ak.ikram_miktar, tutar = CASE ak.menu_id WHEN 0 THEN (ak.miktar - ak.ikram_miktar) * u.fiyat ELSE ak.fiyat END, olcu_birimi = p.deger, mn.menu FROM adisyon_kalem ak INNER JOIN urunler u ON u.urun_id = ak.urun_id INNER JOIN parametreler p ON p.parametre_id = u.olcu_birimi_parametre_id LEFT OUTER JOIN menuler mn ON mn.menu_id = ak.menu_id WHERE ak.silindi = 0 AND ak.adisyon_id = " + dt_adisyon.Rows[0]["adisyon_id"] + " ORDER by ak.odendi, (ak.miktar - ak.odenen_miktar) DESC");
                 grid_adisyon.DataSource = dt_adisyon_kalem;
@@ -897,10 +891,10 @@ namespace sotec_pos
             DataTable dt_adisyon_kalem = SQL.get("SELECT ak.kayit_tarihi, u.fiyat, ad_soyad = kl.ad + ' ' + kl.soyad, ak.adisyon_id ,u.hedef_id, ak.odendi, ak.adisyon_kalem_id, u.urun_adi, ak.miktar, ak.ikram_miktar, tutar = CASE ak.menu_id WHEN 0 THEN (ak.miktar - ak.ikram_miktar) * u.fiyat ELSE ak.fiyat END, olcu_birimi = p.deger, ak.durum_parametre_id, durum = dr.deger, mn.menu FROM adisyon_kalem ak INNER JOIN urunler u ON u.urun_id = ak.urun_id INNER JOIN parametreler p ON p.parametre_id = u.olcu_birimi_parametre_id INNER JOIN parametreler dr ON dr.parametre_id = ak.durum_parametre_id LEFT OUTER JOIN kullanicilar kl ON kl.kullanici_id = ak.kaydeden_kullanici_id LEFT OUTER JOIN menuler mn ON mn.menu_id = ak.menu_id WHERE ak.silindi = 0 AND ak.adisyon_id = " + dt_adisyon.Rows[0]["adisyon_id"] + " ORDER by ak.odendi");
             //DataTable dt_adisyon_kalem = SQL.get("SELECT ak.odenen_miktar, u.fiyat, ak.odendi, ak.adisyon_kalem_id, u.urun_adi, ak.miktar, ak.ikram_miktar, tutar = CASE ak.menu_id WHEN 0 THEN (ak.miktar - ak.ikram_miktar) * u.fiyat ELSE ak.fiyat END, olcu_birimi = p.deger, mn.menu FROM adisyon_kalem ak INNER JOIN urunler u ON u.urun_id = ak.urun_id INNER JOIN parametreler p ON p.parametre_id = u.olcu_birimi_parametre_id LEFT OUTER JOIN menuler mn ON mn.menu_id = ak.menu_id WHERE ak.silindi = 0 AND ak.adisyon_id = " + dt_adisyon.Rows[0]["adisyon_id"] + " ORDER by ak.odendi, (ak.miktar - ak.odenen_miktar) DESC");
             grid_adisyon.DataSource = dt_adisyon_kalem;
-            
+
             DataTable dt_odemeler = SQL.get("SELECT fh.finans_hareket_id, fh.miktar, odeme_tipi = p.deger FROM finans_hareket fh INNER JOIN parametreler p ON p.parametre_id = fh.hareket_tipi_parametre_id WHERE fh.silindi = 0 AND hareket_tipi_parametre_id IN (25, 26, 27, 59) AND referans_id = " + adisyon_id);
             grid_odemeler.DataSource = dt_odemeler;
-            
+
             tb_miktar.Value = 0;
         }
 
@@ -947,10 +941,10 @@ namespace sotec_pos
 
         private void tb_telefon_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
                 DataTable dt = SQL.get("SELECT * FROM musteri WHERE telefon = '" + tb_telefon.Text + "' AND silindi = 0");
-                if(dt.Rows.Count <= 0)
+                if (dt.Rows.Count <= 0)
                 {
                     return;
                 }
@@ -981,7 +975,7 @@ namespace sotec_pos
                 }
                 else
                 {
-                    if(tb_adres.Text.Length > 0)
+                    if (tb_adres.Text.Length > 0)
                         SQL.set("UPDATE musteri SET ad_soyad = '" + tb_ad_soyad.Text + "', " + (cmb_adres.EditValue.ToString() == "1" ? "adres" : "adres_" + cmb_adres.EditValue.ToString()) + " = '" + tb_adres.Text + "' WHERE musteri_id = " + dt.Rows[0]["musteri_id"]);
                     yeni_musteri_id = Convert.ToInt32(dt.Rows[0]["musteri_id"]);
                 }
@@ -1001,7 +995,7 @@ namespace sotec_pos
             if (masa_id != -1)
                 return true;
 
-            if(dt_adisyon.Rows[0]["kurye_kullanici_id"].ToString() == "0")
+            if (dt_adisyon.Rows[0]["kurye_kullanici_id"].ToString() == "0")
             {
                 new mesaj("Kurye seçiniz!").ShowDialog();
                 return false;
@@ -1073,7 +1067,7 @@ namespace sotec_pos
                 btn_adisyon.FlatAppearance.BorderColor = btn_adisyon.ForeColor = Color.DimGray;
                 btn_adisyon.BackColor = Color.GreenYellow;
             }
-            
+
             dt_adisyon = SQL.get("SELECT adisyon_id FROM adisyon WHERE silindi = 0 AND kapandi = 0 AND masa_id = " + masa_id);
             pos_masa_menu_sec p = new pos_masa_menu_sec(Convert.ToInt32(dt_adisyon.Rows[0]["adisyon_id"]));
             p.FormClosing += P_FormClosing;
@@ -1082,7 +1076,7 @@ namespace sotec_pos
 
         private void tb_pass_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
                 DataTable dt = SQL.get("SELECT TOP 1 urun_id, sicak_satis FROM urunler WHERE silindi = 0 AND barkod = '" + tb_barkod.Text + "'");
                 if (dt.Rows.Count <= 0)
@@ -1156,7 +1150,7 @@ namespace sotec_pos
 
         private void text_fisno_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
                 fis_getir();
             }

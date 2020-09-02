@@ -1,8 +1,5 @@
-﻿using System;
-using System.Drawing;
-using System.Collections;
-using System.ComponentModel;
-using DevExpress.XtraReports.UI;
+﻿using DevExpress.XtraReports.UI;
+using System;
 using System.Data;
 
 namespace sotec_pos
@@ -14,42 +11,42 @@ namespace sotec_pos
             InitializeComponent();
 
             DataTable dt_adisyon_kalem = SQL.get(
-                "SELECT " + 
-                "   a.kayit_tarihi, " + 
-                "   kullanici = k.ad + ' ' + k.soyad, " + 
-                "   ak.aciklama, " + 
-                "   ak.adisyon_id, " + 
-                "   m.masa_adi, " + 
-                "   ak.adisyon_kalem_id, " + 
-                "   u.urun_adi, " + 
-                "   ak.miktar, " + 
-                "   ak.ikram_miktar, " + 
-                "   tutar = (ak.miktar - ak.ikram_miktar) * u.fiyat, " + 
-                "   olcu_birimi = p.deger, " + 
-                "   ak.durum_parametre_id, " + 
+                "SELECT " +
+                "   a.kayit_tarihi, " +
+                "   kullanici = k.ad + ' ' + k.soyad, " +
+                "   ak.aciklama, " +
+                "   ak.adisyon_id, " +
+                "   m.masa_adi, " +
+                "   ak.adisyon_kalem_id, " +
+                "   u.urun_adi, " +
+                "   ak.miktar, " +
+                "   ak.ikram_miktar, " +
+                "   tutar = (ak.miktar - ak.ikram_miktar) * u.fiyat, " +
+                "   olcu_birimi = p.deger, " +
+                "   ak.durum_parametre_id, " +
                 "   durum = dr.deger, " +
                 "   sicak_satis = '<ul>' + STUFF(ISNULL((SELECT '<li ' + (CASE ISNULL(uh.urun_id, 0) WHEN 0 THEN 'style=''text-decoration: line-through;''' ELSE '' END) + ' >' + (CASE ISNULL(uh.urun_id, 0) WHEN 0 THEN '(-)' ELSE '' END) + u1.urun_adi + '</li>' FROM urunler_recete ur INNER JOIN urunler u1 ON u1.urun_id = ur.recete_urunu_id LEFT OUTER JOIN urunler_hareket uh ON uh.silindi = 0 AND uh.referans_id = ak.adisyon_kalem_id AND uh.urun_id = u1.urun_id WHERE ur.silindi = 0 AND ur.receteli_urun_id = u.urun_id FOR XML PATH (''), TYPE).value('.', 'VARCHAR(max)'), ''), 1, 0, '') + '</ul>', " +
-                "   kurye = kurye.ad + ' ' + kurye.soyad, " + 
+                "   kurye = kurye.ad + ' ' + kurye.soyad, " +
                 "   a.ad_soyad, " +
                 "   adres_id = a.adres, " +
                 "   mst.adres, " +
                 "   mst.adres_2, " +
                 "   mst.adres_3, " +
                 "   mst.telefon " +
-                "FROM " + 
-                "   adisyon_kalem ak " + 
+                "FROM " +
+                "   adisyon_kalem ak " +
                 "   INNER JOIN urunler u ON u.urun_id = ak.urun_id " + "" +
-                "   INNER JOIN parametreler p ON p.parametre_id = u.olcu_birimi_parametre_id " + 
+                "   INNER JOIN parametreler p ON p.parametre_id = u.olcu_birimi_parametre_id " +
                 "   INNER JOIN parametreler dr ON dr.parametre_id = ak.durum_parametre_id " +
-                "   INNER JOIN adisyon a ON a.adisyon_id = ak.adisyon_id " + 
-                "   LEFT OUTER JOIN masalar m ON m.masa_id = a.masa_id " + 
-                "   INNER JOIN kullanicilar k ON k.kullanici_id = ak.kaydeden_kullanici_id " + 
+                "   INNER JOIN adisyon a ON a.adisyon_id = ak.adisyon_id " +
+                "   LEFT OUTER JOIN masalar m ON m.masa_id = a.masa_id " +
+                "   INNER JOIN kullanicilar k ON k.kullanici_id = ak.kaydeden_kullanici_id " +
                 "   LEFT OUTER JOIN kullanicilar kurye ON kurye.kullanici_id = a.kurye_kullanici_id " +
                 "   LEFT OUTER JOIN musteri mst ON mst.musteri_id = a.musteri_id " +
-                "WHERE " + 
-                "   ak.silindi = 0 " + 
+                "WHERE " +
+                "   ak.silindi = 0 " +
                 "   AND ak.durum_parametre_id = 51 " + "" +
-                "   AND ak.adisyon_id = " + adisyon_id + 
+                "   AND ak.adisyon_id = " + adisyon_id +
                 "   AND u.hedef_id = " + hedef_id);
             this.DataSource = dt_adisyon_kalem;
 

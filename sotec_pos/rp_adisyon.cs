@@ -1,8 +1,5 @@
-﻿using System;
-using System.Drawing;
-using System.Collections;
-using System.ComponentModel;
-using DevExpress.XtraReports.UI;
+﻿using DevExpress.XtraReports.UI;
+using System;
 using System.Data;
 
 namespace sotec_pos
@@ -18,7 +15,7 @@ namespace sotec_pos
             xrLabel1.Text = text;
 
             DataTable dt_adisyon_kalem = SQL.get("SELECT u.fiyat, kullanici = k.ad + ' ' + k.soyad, a.kayit_tarihi, a.adisyon_id, adres_id = a.adres, masa_adi = CASE a.masa_id WHEN -1 THEN 'PERAKENDE SATIŞ' WHEN 0 THEN 'PERAKENDE SATIŞ' ELSE ISNULL(m.masa_adi, '') END, ak.adisyon_kalem_id, u.urun_adi, ak.miktar, ak.ikram_miktar, tutar = CASE ak.menu_id WHEN 0 THEN (ak.miktar - ak.ikram_miktar) * u.fiyat ELSE ak.fiyat END, olcu_birimi = p.deger, ak.durum_parametre_id, durum = dr.deger, kurye = kurye.ad + ' ' + kurye.soyad, a.ad_soyad, mst.adres, mst.adres_2, mst.adres_3, mst.telefon, mn.menu, ak.aciklama FROM adisyon_kalem ak INNER JOIN urunler u ON u.urun_id = ak.urun_id INNER JOIN parametreler p ON p.parametre_id = u.olcu_birimi_parametre_id INNER JOIN parametreler dr ON dr.parametre_id = ak.durum_parametre_id INNER JOIN adisyon a ON a.adisyon_id = ak.adisyon_id LEFT OUTER JOIN masalar m ON m.masa_id = a.masa_id INNER JOIN kullanicilar k ON k.kullanici_id = ak.kaydeden_kullanici_id LEFT OUTER JOIN kullanicilar kurye ON kurye.kullanici_id = a.kurye_kullanici_id LEFT OUTER JOIN musteri mst ON mst.musteri_id = a.musteri_id LEFT OUTER JOIN menuler mn ON mn.menu_id = ak.menu_id WHERE ak.silindi = 0 AND ak.odendi = 0 AND ak.adisyon_id = " + adisyon_id);
-            if(dt_adisyon_kalem.Rows.Count <= 0)
+            if (dt_adisyon_kalem.Rows.Count <= 0)
             {
                 dt_adisyon_kalem = SQL.get("SELECT u.fiyat, kullanici = k.ad + ' ' + k.soyad, a.kayit_tarihi, a.adisyon_id, adres_id = a.adres, masa_adi = CASE a.masa_id WHEN -1 THEN 'PERAKENDE SATIŞ' WHEN 0 THEN 'PERAKENDE SATIŞ' ELSE ISNULL(m.masa_adi, '') END, ak.adisyon_kalem_id, u.urun_adi, ak.miktar, ak.ikram_miktar, tutar = CASE ak.menu_id WHEN 0 THEN (ak.miktar - ak.ikram_miktar) * u.fiyat ELSE ak.fiyat END, olcu_birimi = p.deger, ak.durum_parametre_id, durum = dr.deger, kurye = kurye.ad + ' ' + kurye.soyad, a.ad_soyad, mst.adres, mst.adres_2, mst.adres_3, mst.telefon, mn.menu, ak.aciklama FROM adisyon_kalem ak INNER JOIN urunler u ON u.urun_id = ak.urun_id INNER JOIN parametreler p ON p.parametre_id = u.olcu_birimi_parametre_id INNER JOIN parametreler dr ON dr.parametre_id = ak.durum_parametre_id INNER JOIN adisyon a ON a.adisyon_id = ak.adisyon_id LEFT OUTER JOIN masalar m ON m.masa_id = a.masa_id INNER JOIN kullanicilar k ON k.kullanici_id = ak.kaydeden_kullanici_id LEFT OUTER JOIN kullanicilar kurye ON kurye.kullanici_id = a.kurye_kullanici_id LEFT OUTER JOIN musteri mst ON mst.musteri_id = a.musteri_id LEFT OUTER JOIN menuler mn ON mn.menu_id = ak.menu_id WHERE ak.silindi = 0 AND ak.adisyon_id = " + adisyon_id);
             }
@@ -33,7 +30,7 @@ namespace sotec_pos
             lbl_fis_acilis_tarihi.Text = dt_adisyon_kalem.Rows[0]["kayit_tarihi"].ToString();
             lbl_fis_no.Text = adisyon_id.ToString();
 
-            lbl_adres_bilgileri.Text = 
+            lbl_adres_bilgileri.Text =
                 (dt_adisyon_kalem.Rows[0]["kurye"].ToString().Length > 2 ? "KURYE : " + dt_adisyon_kalem.Rows[0]["kurye"].ToString() + "\n" : "") +
                 (dt_adisyon_kalem.Rows[0]["ad_soyad"].ToString().Length > 2 ? "İSİM : " + dt_adisyon_kalem.Rows[0]["ad_soyad"].ToString() + "\n" : "") +
                 (dt_adisyon_kalem.Rows[0]["telefon"].ToString().Length > 2 ? "TEL : " + dt_adisyon_kalem.Rows[0]["telefon"].ToString() + "\n" : "") +

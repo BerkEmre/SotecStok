@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace sotec_pos
@@ -44,7 +38,7 @@ namespace sotec_pos
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if(tb_miktar.Value <= 0)
+            if (tb_miktar.Value <= 0)
             {
                 new mesaj("Miktar giriniz!").ShowDialog();
                 return;
@@ -56,7 +50,7 @@ namespace sotec_pos
             for (int i = 0; i < gv_recete.RowCount; i++)
             {
                 dr = gv_recete.GetDataRow(i);
-                if(Convert.ToDecimal(dr["miktar"]) != 0)
+                if (Convert.ToDecimal(dr["miktar"]) != 0)
                 {
                     SQL.set("INSERT INTO urunler_hareket (urun_id, hareket_tipi_parametre_id, miktar, referans_id, birim_fiyat) VALUES (" + dr["urun_id"] + ", 15, " + (Convert.ToDecimal(dr["miktar"]) * -1).ToString().Replace(',', '.') + ", " + dt_uh.Rows[0][0] + ", 0.0000)");
                 }

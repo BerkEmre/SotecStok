@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace sotec_pos
@@ -122,7 +116,7 @@ namespace sotec_pos
 
         private void btn_kalem_ekle_Click(object sender, EventArgs e)
         {
-            if(tb_miktar.Value <= 0)
+            if (tb_miktar.Value <= 0)
             {
                 new mesaj("Miktar 0 olamaz!").ShowDialog();
                 return;
@@ -145,7 +139,7 @@ namespace sotec_pos
         {
             if (gv_fatura_kalem.SelectedRowsCount <= 0)
                 return;
-            
+
             if (e.KeyCode == Keys.Delete)
             {
                 DataRow dr = gv_fatura_kalem.GetDataRow(gv_fatura_kalem.GetSelectedRows()[0]);
@@ -289,16 +283,16 @@ namespace sotec_pos
 
         private void tb_barkod_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
-                if(tb_barkod.Text.Length <= 0)
+                if (tb_barkod.Text.Length <= 0)
                 {
                     new mesaj("Barkod Giriniz!").ShowDialog();
                     return;
                 }
 
                 DataTable dt = SQL.get("SELECT * FROM urunler WHERE barkod = '" + tb_barkod.Text + "'");
-                if(dt.Rows.Count <= 0)
+                if (dt.Rows.Count <= 0)
                 {
                     new mesaj("Girdiğiniz barkoda ait ürün bulunamadı!").ShowDialog();
                     return;

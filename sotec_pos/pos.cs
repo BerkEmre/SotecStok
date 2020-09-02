@@ -1,12 +1,7 @@
 ﻿using DevExpress.XtraGrid.Views.Tile.ViewInfo;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace sotec_pos
@@ -36,7 +31,7 @@ namespace sotec_pos
             grid_masa_kategori.DataSource = dt_masalar_kategori;
 
             DataTable dt_masalar = SQL.get("SELECT adisyon_alindi = ISNULL(a.adisyon_alindi, 0), odeme_sayisi = (SELECT COUNT(*) FROM finans_hareket fh WHERE fh.silindi = 0 AND fh.hareket_tipi_parametre_id IN (25, 26, 27, 59) AND fh.referans_id = ISNULL(a.adisyon_id, 0)), m.masa_id, m.masa_adi, acik_mi = CASE ISNULL(a.adisyon_id, 0) WHEN 0 THEN 0 ELSE 1 END, sure = DATEDIFF(MINUTE, ISNULL(a.kayit_tarihi, GETDATE()), GETDATE()), kullanici = (SELECT TOP 1 k.ad + ' ' + k.soyad  FROM adisyon_kalem ak INNER JOIN kullanicilar k ON k.kullanici_id = ak.kaydeden_kullanici_id WHERE ak.adisyon_id = a.adisyon_id) FROM masalar m LEFT OUTER JOIN adisyon a ON a.silindi = 0 AND a.kapandi = 0 AND a.masa_id = m.masa_id WHERE m.silindi = 0 ORDER by m.masa_adi");
-            if(dt_masalar.Rows.Count <= 0)
+            if (dt_masalar.Rows.Count <= 0)
             {
                 new mesaj("Masa girmeden satış yapamazsınız!").ShowDialog();
                 return;
@@ -55,7 +50,7 @@ namespace sotec_pos
 
         private void grid_masalar_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void P_FormClosing(object sender, FormClosingEventArgs e)
@@ -113,8 +108,8 @@ namespace sotec_pos
                         /*if (elemInfo.TextBounds.Contains(e.ControlMousePosition))
                         {*/
                         e.Info = new DevExpress.Utils.ToolTipControlInfo(elemInfo, val);
-                            /*break;
-                        }*/
+                        /*break;
+                    }*/
                     }
                 }
             }
@@ -129,7 +124,7 @@ namespace sotec_pos
         private void tv_masalar_ItemCustomize(object sender, DevExpress.XtraGrid.Views.Tile.TileViewItemCustomizeEventArgs e)
         {
             DataRow dr = tv_masalar.GetDataRow(e.RowHandle);
-            if(dr["acik_mi"].ToString() == "0")
+            if (dr["acik_mi"].ToString() == "0")
             {
                 e.Item.AppearanceItem.Normal.BackColor = Color.LightGreen;
             }

@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace sotec_pos
@@ -120,7 +114,7 @@ namespace sotec_pos
                 if (dialogResult == DialogResult.Yes)
                 {
                     SQL.set("UPDATE urunler_fatura SET silindi = 1 WHERE fatura_id = " + gv_fatura.GetDataRow(gv_fatura.GetSelectedRows()[0])["fatura_id"].ToString());
-                    
+
                     DataTable dt_fatura = SQL.get("SELECT f.fatura_no, f.fatura_id, f.kayit_tarihi, f.fatura_tarihi, f.vade_tarihi, kalem_adet = (SELECT COUNT(*) FROM urunler_fatura_kalem fk WHERE fk.silindi = 0 AND fk.fatura_id = f.fatura_id), c.cari_adi, c.cari_id FROM urunler_fatura f INNER JOIN cariler c ON c.cari_id = f.cari_id WHERE f.silindi = 0 AND f.fatura_tipi_parametre_id = 29 ORDER by f.fatura_id DESC");
                     grid_fatura.DataSource = dt_fatura;
                 }

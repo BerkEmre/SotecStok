@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace sotec_pos
@@ -34,7 +28,7 @@ namespace sotec_pos
             }
             grid_kaynak.DataSource = dt_kaynak;
             DataTable dt_hedef = SQL.get("SELECT olcu_birimi = olcu.deger, miktar = 0.0000, u.urun_id, u.urun_adi, resim = 'urun_resimleri/' + u.resim, u.fiyat, k.kategori_adi, ust_kategori_adi = uk.kategori_adi FROM urunler u INNER JOIN kategoriler k ON k.kategori_id = u.kategori_id INNER JOIN kategoriler uk ON uk.kategori_id = k.ust_kategori_id INNER JOIN parametreler olcu ON olcu.parametre_id = u.olcu_birimi_parametre_id WHERE u.silindi = 0 AND u.receteli_urun = 1 ORDER by uk.kategori_adi, k.kategori_adi, u.urun_adi");
-            if(dt_hedef.Rows.Count <= 0)
+            if (dt_hedef.Rows.Count <= 0)
             {
                 new mesaj("Reçeteli ürün girmeden reçete giremezsiniz!").ShowDialog();
                 this.Close();
@@ -43,7 +37,7 @@ namespace sotec_pos
             cmb_hedef.Properties.DataSource = dt_hedef;
             cmb_hedef.EditValue = dt_hedef.Rows[0]["urun_id"];
 
-            if(dt_hedef.Rows.Count > 0)
+            if (dt_hedef.Rows.Count > 0)
             {
                 DataTable dt_recete = SQL.get("SELECT ur.recete_id, u.urun_id, u.urun_adi, ur.miktar, olcu_birimi = p.deger, olcu_birimi_id = p.parametre_id FROM urunler_recete ur INNER JOIN urunler u ON u.urun_id = ur.recete_urunu_id INNER JOIN parametreler p ON p.parametre_id = u.olcu_birimi_parametre_id WHERE ur.silindi = 0 AND ur.receteli_urun_id = " + cmb_hedef.EditValue);
                 grid_recete.DataSource = dt_recete;
@@ -58,19 +52,19 @@ namespace sotec_pos
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if(gv_kaynak.SelectedRowsCount <= 0)
+            if (gv_kaynak.SelectedRowsCount <= 0)
             {
                 new mesaj("Sarf ürünü seçin!").ShowDialog();
                 return;
             }
 
-            if(cmb_hedef.EditValue == null)
+            if (cmb_hedef.EditValue == null)
             {
                 new mesaj("Reçete ürünü seçin!").ShowDialog();
                 return;
             }
 
-            if(tb_miktar.Value <= 0)
+            if (tb_miktar.Value <= 0)
             {
                 new mesaj("Miktar girin!").ShowDialog();
                 return;
@@ -82,14 +76,14 @@ namespace sotec_pos
             for (int i = 0; i < gv_recete.RowCount; i++)
             {
                 dr_recete = gv_recete.GetDataRow(i);
-                if(Convert.ToInt32(dr_recete["urun_id"]) == Convert.ToInt32(dr["urun_id"]))
+                if (Convert.ToInt32(dr_recete["urun_id"]) == Convert.ToInt32(dr["urun_id"]))
                 {
                     SQL.set("UPDATE urunler_recete SET miktar = " + tb_miktar.Value.ToString().Replace(',', '.') + " WHERE recete_id = " + dr_recete["recete_id"]);
                     guncellendimi = true;
                 }
             }
 
-            if(!guncellendimi)
+            if (!guncellendimi)
             {
                 SQL.set("INSERT INTO urunler_recete ([receteli_urun_id], [recete_urunu_id], [miktar]) VALUES (" + cmb_hedef.EditValue + ", " + dr["urun_id"] + ", " + tb_miktar.Value.ToString().Replace(',', '.') + ")");
             }
@@ -138,7 +132,7 @@ namespace sotec_pos
             if (dt.Rows.Count <= 0)
             {
                 dt = SQL.get("SELECT * FROM katsayi_donusum WHERE silindi = 0 AND parametre_1_id = " + olcu_birimi_id + " AND parametre_2_id = " + cmb_kaynak_birim.EditValue);
-                if(dt.Rows.Count <= 0)
+                if (dt.Rows.Count <= 0)
                     katsayi = 1;
                 else
                     katsayi = 1 / Convert.ToDecimal(dt.Rows[0]["katsayi"]);

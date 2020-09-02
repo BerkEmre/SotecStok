@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace sotec_pos
@@ -14,7 +8,7 @@ namespace sotec_pos
     public partial class ayarlar_yazici_sec : Form
     {
         bool geri_donuslu;
-        public string yazici= "";
+        public string yazici = "";
 
         public ayarlar_yazici_sec(bool geri_donuslu)
         {
@@ -41,7 +35,7 @@ namespace sotec_pos
             if (gv_masa_kategori.SelectedRowsCount <= 0)
                 return;
 
-            if(geri_donuslu)
+            if (geri_donuslu)
             {
                 yazici = gv_masa_kategori.GetDataRow(gv_masa_kategori.GetSelectedRows()[0])["yazici"].ToString();
                 this.DialogResult = DialogResult.OK;

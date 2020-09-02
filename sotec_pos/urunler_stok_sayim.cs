@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace sotec_pos
@@ -31,7 +25,7 @@ namespace sotec_pos
 
             DataRow dr = gv_urunler.GetDataRow(e.RowHandle);
 
-            if(e.Column.FieldName == "sayim")
+            if (e.Column.FieldName == "sayim")
             {
                 stok = Convert.ToDecimal(dr["stok"]);
                 try { sayim = Convert.ToDecimal(e.Value); } catch { sayim = 0; }
@@ -55,14 +49,14 @@ namespace sotec_pos
             for (int i = 0; i < gv_urunler.RowCount; i++)
             {
                 dr = gv_urunler.GetDataRow(i);
-                if(Convert.ToDecimal(dr["fark"]) != 0)
+                if (Convert.ToDecimal(dr["fark"]) != 0)
                 {
                     sayim_varmi = true;
                     break;
                 }
             }
 
-            if(!sayim_varmi)
+            if (!sayim_varmi)
             {
                 new mesaj("Sayımda fark bulunamadı!").ShowDialog();
                 return;

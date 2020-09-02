@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.NetworkInformation;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace sotec_pos
@@ -43,7 +40,7 @@ namespace sotec_pos
                 giris_yapabilir = false;
             }
 
-            if(giris_yapabilir)
+            if (giris_yapabilir)
                 Application.Run(new Form1());
             else
                 Application.Run(new onay_iste());

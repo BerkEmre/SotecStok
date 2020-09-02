@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace sotec_pos
@@ -39,7 +33,7 @@ namespace sotec_pos
         {
             DataTable dt_cari = SQL.get("SELECT * FROM cariler WHERE [cari_tipi_parametre_id] IN (1, 43) AND silindi = 0");
 
-            if(dt_cari.Rows.Count <= 0)
+            if (dt_cari.Rows.Count <= 0)
             {
                 new mesaj("Cari girmeden sipariş giremezsiniz!").ShowDialog();
                 this.Close();
@@ -50,7 +44,7 @@ namespace sotec_pos
             cmb_cariler.EditValue = dt_cari.Rows[0]["cari_id"];
 
             DataTable dt_urunler = SQL.get("SELECT u.urun_id, u.urun_adi, olcu_birimi = p.deger FROM urunler u INNER JOIN parametreler p ON p.parametre_id = u.olcu_birimi_parametre_id WHERE u.silindi = 0 AND u.receteli_urun = 0");
-            if(dt_urunler.Rows.Count <= 0)
+            if (dt_urunler.Rows.Count <= 0)
             {
                 new mesaj("Sipariş girilecek ürün bulunamadı!").ShowDialog();
                 this.Close();
@@ -114,7 +108,7 @@ namespace sotec_pos
 
         private void btn_kalem_ekle_Click(object sender, EventArgs e)
         {
-            if(tb_miktar.Value <= 0)
+            if (tb_miktar.Value <= 0)
             {
                 new mesaj("Miktar giriniz!").ShowDialog();
                 return;
@@ -184,7 +178,7 @@ namespace sotec_pos
                 if (!gv_siapris_kalem.IsDataRow(gv_siapris_kalem.GetSelectedRows()[0]))
                     continue;
 
-                if(Convert.ToInt32(gv_siapris_kalem.GetDataRow(gv_siapris_kalem.GetSelectedRows()[i])["kapandi"]) == 0)
+                if (Convert.ToInt32(gv_siapris_kalem.GetDataRow(gv_siapris_kalem.GetSelectedRows()[i])["kapandi"]) == 0)
                     SQL.set("UPDATE urunler_siparis_kalem SET kapandi = 1 WHERE siparis_kalem_id = " + gv_siapris_kalem.GetDataRow(gv_siapris_kalem.GetSelectedRows()[i])["siparis_kalem_id"]);
                 else
                     SQL.set("UPDATE urunler_siparis_kalem SET kapandi = 0 WHERE siparis_kalem_id = " + gv_siapris_kalem.GetDataRow(gv_siapris_kalem.GetSelectedRows()[i])["siparis_kalem_id"]);

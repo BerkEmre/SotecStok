@@ -1,8 +1,5 @@
-﻿using System;
-using System.Drawing;
-using System.Collections;
-using System.ComponentModel;
-using DevExpress.XtraReports.UI;
+﻿using DevExpress.XtraReports.UI;
+using System;
 using System.Data;
 
 namespace sotec_pos
@@ -15,7 +12,7 @@ namespace sotec_pos
 
             lbl_tarih.Text = tarih1.Day + "." + tarih1.Month + "." + tarih1.Year + "-" + tarih2.Day + "." + tarih2.Month + "." + tarih2.Year;
             DataTable dt = SQL.get("SELECT ad_soyad = k.ad + ' ' + k.soyad, u.urun_adi, miktar = SUM(ak.ikram_miktar), tutar = SUM(ak.ikram_miktar * u.fiyat), p.deger FROM kullanicilar k LEFT OUTER JOIN adisyon_kalem ak ON ak.silindi = 0 AND ak.kayit_tarihi BETWEEN '" + tarih1.ToString("yyyy-MM-dd HH:mm:00.000") + "' AND DATEADD(DAY, 0, '" + tarih2.ToString("yyyy-MM-dd HH:mm:00.000") + "') AND ak.ikram != 0 AND ak.kaydeden_kullanici_id = k.kullanici_id INNER JOIN urunler u ON u.urun_id = ak.urun_id LEFT OUTER JOIN parametreler p ON p.parametre_id = ak.ikram " +
-                " WHERE k.silindi = 0 " + 
+                " WHERE k.silindi = 0 " +
                 " GROUP by k.ad, k.soyad, u.urun_adi, p.deger");
 
             this.DataSource = dt;
@@ -48,7 +45,7 @@ namespace sotec_pos
             GroupHeader2.GroupFields.Add(groupField);
             GroupField groupField1 = new GroupField("deger");
             GroupHeader1.GroupFields.Add(groupField1);
-            
+
         }
     }
 }

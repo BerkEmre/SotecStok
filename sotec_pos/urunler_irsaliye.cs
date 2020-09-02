@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace sotec_pos
@@ -38,7 +32,7 @@ namespace sotec_pos
 
         private void btn_log_out_Click(object sender, EventArgs e)
         {
-            if(tb_no.Text.Length <= 0)
+            if (tb_no.Text.Length <= 0)
             {
                 new mesaj("İrsaliye No Giriniz!").ShowDialog();
                 return;
@@ -48,7 +42,7 @@ namespace sotec_pos
                 SQL.set("INSERT INTO urunler_irsaliye (kaydeden_kullanici_id, cari_id, irsaliye_tarihi, irsaliye_no, aciklama) VALUES (" + SQL.kullanici_id + ", " + cmb_cariler.EditValue + ", '" + dt_teslim_tarihi.Value.ToString("yyyy-MM-dd HH:mm:ss.fff") + "', '" + tb_no.Text + "', '" + tb_aciklama.Text + "')");
             else
             {
-                if(kalem_adet != 0)
+                if (kalem_adet != 0)
                 {
                     new mesaj("İrsaliyede kalem varken değiştirilemez!").ShowDialog();
                     return;
@@ -100,7 +94,7 @@ namespace sotec_pos
         {
             if (gv_irsaliye.SelectedRowsCount <= 0)
                 return;
-            
+
             if (e.KeyCode == Keys.Delete)
             {
                 if (kalem_adet != 0)
@@ -128,7 +122,7 @@ namespace sotec_pos
 
         private void btn_kalem_ekle_Click(object sender, EventArgs e)
         {
-            if(gv_irsaliye_kalem.SelectedRowsCount <= 0)
+            if (gv_irsaliye_kalem.SelectedRowsCount <= 0)
             {
                 new mesaj("Sipariş kalemi seçiniz!").ShowDialog();
                 return;
@@ -139,7 +133,7 @@ namespace sotec_pos
             {
                 dr = gv_irsaliye_kalem.GetDataRow(gv_irsaliye_kalem.GetSelectedRows()[i]);
 
-                if(Convert.ToDecimal(dr["gelen_miktar"]) == 0)
+                if (Convert.ToDecimal(dr["gelen_miktar"]) == 0)
                 {
                     new mesaj("Gelen Miktar 0 olan sipariş kalemleri mevcut!").ShowDialog();
                     return;
@@ -165,10 +159,10 @@ namespace sotec_pos
             if (gv_fatura_kalem.SelectedRowsCount <= 0)
                 return;
 
-            if(e.KeyCode == Keys.Delete)
+            if (e.KeyCode == Keys.Delete)
             {
                 DataRow dr = gv_fatura_kalem.GetDataRow(gv_fatura_kalem.GetSelectedRows()[0]);
-                if(Convert.ToInt32(dr["fatura_kalem_id"]) != 0)
+                if (Convert.ToInt32(dr["fatura_kalem_id"]) != 0)
                 {
                     new mesaj("Fatura girilmiş kalemleri silemezsiniz!").ShowDialog();
                     return;

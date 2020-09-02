@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace sotec_pos
@@ -54,13 +48,13 @@ namespace sotec_pos
 
         private void btn_log_out_Click(object sender, EventArgs e)
         {
-            if(tb_tutar.Value <= 0)
+            if (tb_tutar.Value <= 0)
             {
                 new mesaj("Tutar 0 girilemez!").Show();
                 return;
             }
 
-            if(secili_tahsilat_id == 0)
+            if (secili_tahsilat_id == 0)
             {
                 DataTable dt_t;
                 if (Convert.ToInt32(cmb_tahsilat_tipi.EditValue) == 35)//Tahsilat
@@ -124,7 +118,7 @@ namespace sotec_pos
 
         private void grid_tahsilat_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Delete)
+            if (e.KeyCode == Keys.Delete)
             {
                 DialogResult dialogResult = MessageBox.Show("Silmek istediğinizden emin misiniz?", "Dikkat", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)

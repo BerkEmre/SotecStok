@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace sotec_pos
@@ -28,7 +22,7 @@ namespace sotec_pos
             cmb_hedef_birim.Properties.DataSource = dt_cinsiyet;
             cmb_hedef_birim.EditValue = dt_cinsiyet.Rows[0]["parametre_id"];
 
-            if(donusum_id != 0)
+            if (donusum_id != 0)
             {
                 DataTable dt_donusum = SQL.get("SELECT * FROM katsayi_donusum WHERE donusum_id = " + donusum_id);
                 cmb_kaynak_birim.EditValue = dt_donusum.Rows[0]["parametre_1_id"].ToString();
@@ -40,7 +34,7 @@ namespace sotec_pos
         private void btn_log_out_Click(object sender, EventArgs e)
         {
             DataTable dt_control = SQL.get("SELECT * FROM katsayi_donusum WHERE silindi = 0 AND parametre_1_id = " + cmb_kaynak_birim.EditValue + " AND parametre_2_id = " + cmb_hedef_birim.EditValue + " AND donusum_id != " + donusum_id);
-            if(dt_control.Rows.Count > 0)
+            if (dt_control.Rows.Count > 0)
             {
                 new mesaj("Girdiğiniz dönüşüm daha önceden tanımlanmıştır!").ShowDialog();
                 return;

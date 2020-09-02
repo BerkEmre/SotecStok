@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace sotec_pos
@@ -32,7 +26,7 @@ namespace sotec_pos
             cmb_cari_tip.Properties.DataSource = dt_p;
             cmb_cari_tip.EditValue = dt_p.Rows[0]["parametre_id"];
 
-            if(cari_id != 0)
+            if (cari_id != 0)
             {
                 btn_log_out.Text = "Düzenle";
 

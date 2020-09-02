@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace sotec_pos
@@ -14,7 +8,7 @@ namespace sotec_pos
     public partial class urun_ekle_duzenle : Form
     {
         int urun_id;
-        
+
         string tasinacakDosya = "", tasinacakDosyaIsmi = "", dosyaninTasinacagiKlasor = "";
 
         public urun_ekle_duzenle(int urun_id)
@@ -48,7 +42,7 @@ namespace sotec_pos
 
             DataTable dt = SQL.get("SELECT k.kategori_id, ust_kategori_adi = uk.kategori_adi, k.kategori_adi FROM kategoriler k INNER JOIN kategoriler uk ON k.ust_kategori_id = uk.kategori_id AND uk.silindi = 0 WHERE k.silindi = 0");
             cmb_kategori_id.Properties.DataSource = dt;
-            if(dt.Rows.Count > 0)
+            if (dt.Rows.Count > 0)
                 cmb_kategori_id.EditValue = dt.Rows[0]["kategori_id"];
             else
             {
@@ -61,7 +55,7 @@ namespace sotec_pos
             cmb_kdv.Properties.DataSource = kdv;
             cmb_kdv.EditValue = kdv.Rows[0]["kdv"];
 
-            if(urun_id != 0)
+            if (urun_id != 0)
             {
                 DataTable dt_urun = SQL.get("SELECT * FROM urunler WHERE urun_id = " + urun_id);
                 tb_urun_adi.Text = dt_urun.Rows[0]["urun_adi"].ToString();
@@ -107,13 +101,13 @@ namespace sotec_pos
 
         private void btn_log_out_Click(object sender, EventArgs e)
         {
-            if(tb_urun_adi.Text.Length <= 0)
+            if (tb_urun_adi.Text.Length <= 0)
             {
                 new mesaj("Ürün Adı giriniz!").ShowDialog();
                 return;
             }
 
-            if(tb_fiyat.Value <= 0)
+            if (tb_fiyat.Value <= 0)
             {
                 new mesaj("Satış fiyatı giriniz!").ShowDialog();
                 return;

@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace sotec_pos
@@ -31,9 +26,9 @@ namespace sotec_pos
             lbl_kullanici_adi.Text = SQL.ad + " " + SQL.soyad + " (" + SQL.kullanici_id.ToString() + ")";
 
             DataTable dt = SQL.get("SELECT ky.yetki_id FROM kullanicilar_yetki ky INNER JOIN yetkiler y ON y.yetki_id = ky.yetki_id AND y.silindi = 0 AND y.ust_yetki_id = 0 WHERE ky.silindi = 0 AND ky.kullanici_id = " + SQL.kullanici_id);
-            if(dt.Rows.Count == 1)
+            if (dt.Rows.Count == 1)
             {
-                if(Convert.ToInt32(dt.Rows[0]["yetki_id"]) == 2)
+                if (Convert.ToInt32(dt.Rows[0]["yetki_id"]) == 2)
                 {
                     pos p = new pos(this);
                     p.ShowDialog();
@@ -41,7 +36,7 @@ namespace sotec_pos
             }
 
             DataTable dt_gun = SQL.get("SELECT * FROM gunler WHERE silindi = 0");
-            if(dt_gun.Rows.Count > 0)
+            if (dt_gun.Rows.Count > 0)
             {
                 bt_gun.Text = "Günü Bitir";
                 bt_gun.FlatAppearance.BorderColor = bt_gun.ForeColor = Color.DimGray;
@@ -62,7 +57,7 @@ namespace sotec_pos
 
         private void btn_urun_Click(object sender, EventArgs e)
         {
-            if(!SQL.yetki_kontrol(1))
+            if (!SQL.yetki_kontrol(1))
             {
                 new mesaj("Yetkiniz Yok!").ShowDialog();
                 return;
@@ -173,7 +168,7 @@ namespace sotec_pos
                 if (dialogResult == DialogResult.Yes)
                 {
                     DataTable dt_masalar = SQL.get("SELECT * FROM adisyon WHERE silindi = 0 AND kapandi = 0");
-                    if(dt_masalar.Rows.Count > 0)
+                    if (dt_masalar.Rows.Count > 0)
                     {
                         new mesaj("Bütün masaları kapatmadan günü kapatamazınız!").ShowDialog();
                         return;

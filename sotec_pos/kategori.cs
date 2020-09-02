@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace sotec_pos
@@ -76,7 +70,7 @@ namespace sotec_pos
         {
             if (gv_ust_kategori.SelectedRowsCount <= 0)
                 return;
-            
+
             kategori_ekle_duzenle k = new kategori_ekle_duzenle(0, Convert.ToInt32(gv_ust_kategori.GetDataRow(gv_ust_kategori.GetSelectedRows()[0])["kategori_id"]));
             k.FormClosing += K_FormClosing1;
             k.ShowDialog();
@@ -94,7 +88,7 @@ namespace sotec_pos
 
         private void grid_ust_kategori_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Delete)
+            if (e.KeyCode == Keys.Delete)
             {
                 int kategori_id = Convert.ToInt32(gv_ust_kategori.GetDataRow(gv_ust_kategori.GetSelectedRows()[0])["kategori_id"]);
 
@@ -102,7 +96,7 @@ namespace sotec_pos
                 if (dt.Rows.Count > 0)
                 {
                     new mesaj("Alt kategorileri silmeden silemezsiniz...").ShowDialog();
-                    return; 
+                    return;
                 }
                 DialogResult dialogResult = MessageBox.Show("Silmek istediğinizden emin misiniz?", "Dikkat", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
@@ -116,7 +110,7 @@ namespace sotec_pos
 
         private void grid_kategoriler_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Delete)
+            if (e.KeyCode == Keys.Delete)
             {
                 int kategori_id = Convert.ToInt32(gv_kategoriler.GetDataRow(gv_kategoriler.GetSelectedRows()[0])["kategori_id"]);
                 DialogResult dialogResult = MessageBox.Show("Silmek istediğinizden emin misiniz?", "Dikkat", MessageBoxButtons.YesNo);

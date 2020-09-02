@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace sotec_pos
@@ -49,7 +43,7 @@ namespace sotec_pos
             DataTable dt_adisyon = SQL.get("SELECT * FROM adisyon WHERE silindi = 0 AND kapandi = 0 AND masa_id = " + masa_id);
             DataTable dt_adisyon_aktarilacak = SQL.get("SELECT * FROM adisyon WHERE silindi = 0 AND kapandi = 0 AND masa_id = " + aktarilacak_masa_id);
 
-            if(adisyon_kalem_id == 0)
+            if (adisyon_kalem_id == 0)
             {
                 if (dt_adisyon_aktarilacak.Rows.Count <= 0)
                 {

@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace sotec_pos
@@ -47,7 +40,7 @@ namespace sotec_pos
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(virgul)
+            if (virgul)
             {
                 tb_miktar.Value = Convert.ToDecimal(tb_miktar.Value.ToString() + "," + kac_tane_sifir(virgulden_sonra_sifir) + "7");
                 virgul = false;
@@ -217,7 +210,7 @@ namespace sotec_pos
 
         private void tb_miktar_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
                 this.DialogResult = DialogResult.OK;
                 this.Close();

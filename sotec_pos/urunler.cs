@@ -1,12 +1,8 @@
 ﻿using DevExpress.XtraGrid.Views.Grid;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace sotec_pos
@@ -105,7 +101,7 @@ namespace sotec_pos
             if (gv_urunler.SelectedRowsCount <= 0)
                 return;
 
-            if(e.KeyCode == Keys.Delete)
+            if (e.KeyCode == Keys.Delete)
             {
                 DialogResult dialogResult = MessageBox.Show("Silmek istediğinizden emin misiniz?", "Dikkat", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)

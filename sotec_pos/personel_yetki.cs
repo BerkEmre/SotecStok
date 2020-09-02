@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace sotec_pos
@@ -40,7 +34,7 @@ namespace sotec_pos
                 if (Convert.ToInt32(dr["kullanici_yetki"]) == 1)
                 {
                     DataTable dt = SQL.get("SELECT * FROM kullanicilar_yetki WHERE silindi = 0 AND kullanici_id = " + kullanici_id + " AND yetki_id = " + dr["yetki_id"]);
-                    if(dt.Rows.Count <= 0)
+                    if (dt.Rows.Count <= 0)
                         SQL.set("INSERT INTO kullanicilar_yetki (kullanici_id, yetki_id) VALUES (" + kullanici_id + ", " + dr["yetki_id"] + ")");
                 }
                 else

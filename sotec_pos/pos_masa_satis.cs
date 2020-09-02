@@ -1,12 +1,7 @@
 ﻿using DevExpress.XtraReports.UI;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace sotec_pos
@@ -38,7 +33,7 @@ namespace sotec_pos
             float y = (Convert.ToInt32(pnl_kok.Height) - Convert.ToInt32(pnl_center.Height)) / 2;
 
             pnl_center.Location = new Point(x: Convert.ToInt32(x), y: Convert.ToInt32(y));
-            
+
             dt_secili = new DataTable();
             dt_secili.Columns.Add("adisyon_kalem_id", typeof(Int32));
             dt_secili.Columns.Add("urun_adi", typeof(String));
@@ -55,7 +50,8 @@ namespace sotec_pos
             lbl_masa.Text = dt_masa.Rows[0]["masa_adi"].ToString();
 
             DataTable dt_adisyon = SQL.get("SELECT adisyon_id FROM adisyon WHERE silindi = 0 AND kapandi = 0 AND masa_id = " + masa_id);
-            if (dt_adisyon.Rows.Count != 0) {
+            if (dt_adisyon.Rows.Count != 0)
+            {
                 adisyon_id = Convert.ToInt32(dt_adisyon.Rows[0]["adisyon_id"]);
                 DataTable dt_adisyon_kalem = SQL.get("SELECT ak.odenen_miktar, u.fiyat, ak.odendi, ak.adisyon_kalem_id, u.urun_adi, ak.miktar, ak.ikram_miktar, tutar = CASE ak.menu_id WHEN 0 THEN (ak.miktar - ak.ikram_miktar) * u.fiyat ELSE ak.fiyat END, olcu_birimi = p.deger, mn.menu FROM adisyon_kalem ak INNER JOIN urunler u ON u.urun_id = ak.urun_id INNER JOIN parametreler p ON p.parametre_id = u.olcu_birimi_parametre_id LEFT OUTER JOIN menuler mn ON mn.menu_id = ak.menu_id WHERE ak.silindi = 0 AND ak.adisyon_id = " + dt_adisyon.Rows[0]["adisyon_id"] + " ORDER by (CASE ak.odendi WHEN 0 THEN 0 ELSE 1 END), (ak.miktar - ak.odenen_miktar) DESC");
                 grid_adisyon.DataSource = dt_adisyon_kalem;
@@ -245,7 +241,7 @@ namespace sotec_pos
             for (int i = 0; i < tv_adisyon.RowCount; i++)
             {
                 dr_secilen = tv_adisyon.GetDataRow(i);
-                if(dr_secilen["odendi"].ToString() == "0")
+                if (dr_secilen["odendi"].ToString() == "0")
                 {
                     for (int j = 0; j < dt_secili.Rows.Count; j++)
                     {
@@ -304,7 +300,7 @@ namespace sotec_pos
             else
                 odenecek_tutar = tb_miktar.Value;
 
-            if(odenecek_tutar <= 0)
+            if (odenecek_tutar <= 0)
             {
                 new mesaj("Ödenecek tutar bulunamadı!").ShowDialog();
                 return;
@@ -323,9 +319,9 @@ namespace sotec_pos
                 /*DialogResult dialogResult = MessageBox.Show("Ödeme çıktısı almak ister misiniz?", "Çıktı", MessageBoxButtons.YesNo);
                 if(dialogResult == DialogResult.Yes)
                 {*/
-                    rp_odeme s = new rp_odeme(Convert.ToInt32(dt_adisyon.Rows[0]["adisyon_id"]), dt_secili, "NAKİT", odenecek_tutar);
-                    ReportPrintTool printTool = new ReportPrintTool(s);
-                    try { printTool.Print(text); } catch { printTool.Print(); }
+                rp_odeme s = new rp_odeme(Convert.ToInt32(dt_adisyon.Rows[0]["adisyon_id"]), dt_secili, "NAKİT", odenecek_tutar);
+                ReportPrintTool printTool = new ReportPrintTool(s);
+                try { printTool.Print(text); } catch { printTool.Print(); }
                 //}
 
                 dt_secili.Rows.Clear();
@@ -385,9 +381,9 @@ namespace sotec_pos
                 /*DialogResult dialogResult = MessageBox.Show("Ödeme çıktısı almak ister misiniz?", "Çıktı", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {*/
-                    rp_odeme s = new rp_odeme(Convert.ToInt32(dt_adisyon.Rows[0]["adisyon_id"]), dt_secili, "KREDİ", odenecek_tutar);
-                    ReportPrintTool printTool = new ReportPrintTool(s);
-                    try { printTool.Print(text); } catch { printTool.Print(); }
+                rp_odeme s = new rp_odeme(Convert.ToInt32(dt_adisyon.Rows[0]["adisyon_id"]), dt_secili, "KREDİ", odenecek_tutar);
+                ReportPrintTool printTool = new ReportPrintTool(s);
+                try { printTool.Print(text); } catch { printTool.Print(); }
                 //}
                 dt_secili.Rows.Clear();
 
@@ -446,9 +442,9 @@ namespace sotec_pos
                 /*DialogResult dialogResult = MessageBox.Show("Ödeme çıktısı almak ister misiniz?", "Çıktı", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {*/
-                    rp_odeme s = new rp_odeme(Convert.ToInt32(dt_adisyon.Rows[0]["adisyon_id"]), dt_secili, "Y.FİŞİ", odenecek_tutar);
-                    ReportPrintTool printTool = new ReportPrintTool(s);
-                    try { printTool.Print(text); } catch { printTool.Print(); }
+                rp_odeme s = new rp_odeme(Convert.ToInt32(dt_adisyon.Rows[0]["adisyon_id"]), dt_secili, "Y.FİŞİ", odenecek_tutar);
+                ReportPrintTool printTool = new ReportPrintTool(s);
+                try { printTool.Print(text); } catch { printTool.Print(); }
                 //}
                 dt_secili.Rows.Clear();
 
@@ -501,8 +497,8 @@ namespace sotec_pos
 
             if (odenecek_miktar > 1)
                 odenecek_miktar = 1;
-            
-            if(odenecek_miktar > (Convert.ToDecimal(dr_secilen["miktar"]) - Convert.ToDecimal(dr_secilen["odenen_miktar"])))
+
+            if (odenecek_miktar > (Convert.ToDecimal(dr_secilen["miktar"]) - Convert.ToDecimal(dr_secilen["odenen_miktar"])))
                 odenecek_miktar = (Convert.ToDecimal(dr_secilen["miktar"]) - Convert.ToDecimal(dr_secilen["odenen_miktar"]));
 
             if (odenecek_miktar == 0)
@@ -511,7 +507,7 @@ namespace sotec_pos
 
             if (dr_secilen["odendi"].ToString() != "0")
             {
-                if(Convert.ToDecimal(dr_secilen["odenen_miktar"]) >= Convert.ToDecimal(dr_secilen["miktar"]))
+                if (Convert.ToDecimal(dr_secilen["odenen_miktar"]) >= Convert.ToDecimal(dr_secilen["miktar"]))
                     return;
             }
 
@@ -529,21 +525,21 @@ namespace sotec_pos
                 }
             }
 
-            if(!varmi)
+            if (!varmi)
             {
                 DataRow dr = dt_secili.NewRow();
                 dr["adisyon_kalem_id"] = dr_secilen["adisyon_kalem_id"];
                 dr["urun_adi"] = dr_secilen["urun_adi"];
                 dr["miktar"] = odenecek_miktar;
                 dr["ikram_miktar"] = dr_secilen["ikram_miktar"];
-                dr["tutar"] = (dr_secilen["menu"].ToString().Length == 0 ? (odenecek_miktar - Convert.ToDecimal(dr_secilen["ikram_miktar"])) * Convert.ToDecimal(dr_secilen["fiyat"]): Convert.ToDecimal(dr_secilen["tutar"]));//dr_secilen["tutar"];
+                dr["tutar"] = (dr_secilen["menu"].ToString().Length == 0 ? (odenecek_miktar - Convert.ToDecimal(dr_secilen["ikram_miktar"])) * Convert.ToDecimal(dr_secilen["fiyat"]) : Convert.ToDecimal(dr_secilen["tutar"]));//dr_secilen["tutar"];
                 dr["fiyat"] = dr_secilen["fiyat"];
                 dr["olcu_birimi"] = dr_secilen["olcu_birimi"];
                 dr["menu"] = dr_secilen["menu"];
                 dt_secili.Rows.Add(dr);
             }
-            
-            
+
+
             decimal top_tutar = 0;
             for (int i = 0; i < tv_odenecekler.RowCount; i++)
             {
@@ -556,7 +552,7 @@ namespace sotec_pos
         {
             if (tv_odenecekler.SelectedRowsCount <= 0)
                 return;
-            
+
             tv_odenecekler.DeleteRow(tv_odenecekler.GetSelectedRows()[0]);
 
             decimal top_tutar = 0;
@@ -615,7 +611,7 @@ namespace sotec_pos
 
         private void button6_Click(object sender, EventArgs e)
         {
-            if(tb_yuzde.Value <= 0)
+            if (tb_yuzde.Value <= 0)
             {
                 new mesaj("Yüzde rakamı giriniz!").Show();
                 return;

@@ -1,12 +1,7 @@
 ﻿using DevExpress.XtraGrid.Views.Tile.ViewInfo;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace sotec_pos
@@ -45,7 +40,7 @@ namespace sotec_pos
             DialogResult dialogResult = MessageBox.Show("Kapanmış masayı tekrar açmak istediğinize emin misiniz?", "Dikkat", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                if(SQL.get("SELECT * FROM adisyon a WHERE a.silindi = 0 AND a.kapandi = 0 AND a.masa_id = " + dr["masa_id"]).Rows.Count > 0)
+                if (SQL.get("SELECT * FROM adisyon a WHERE a.silindi = 0 AND a.kapandi = 0 AND a.masa_id = " + dr["masa_id"]).Rows.Count > 0)
                 {
                     new mesaj("Masada aktif işlem var\naktif masayı başka masaya taşıyın\nsonra tekrar deneyin!").ShowDialog();
                     return;
@@ -69,7 +64,7 @@ namespace sotec_pos
                     {
                         string val = "";
                         decimal top_tutar = 0, odenen = 0;
-                        
+
                         if (tv_masalar.GetDataRow(hi.RowHandle)["adisyon_id"].ToString() != "0")
                         {
                             DataTable dt_adisyon_kalem = SQL.get("SELECT ak.adisyon_kalem_id, u.urun_adi, ak.miktar, ak.ikram_miktar, tutar = (ak.miktar - ak.ikram_miktar) * u.fiyat, olcu_birimi = p.deger, ak.durum_parametre_id, durum = dr.deger FROM adisyon_kalem ak INNER JOIN urunler u ON u.urun_id = ak.urun_id INNER JOIN parametreler p ON p.parametre_id = u.olcu_birimi_parametre_id INNER JOIN parametreler dr ON dr.parametre_id = ak.durum_parametre_id WHERE ak.silindi = 0 AND ak.adisyon_id = " + tv_masalar.GetDataRow(hi.RowHandle)["adisyon_id"]);

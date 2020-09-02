@@ -1,8 +1,5 @@
-﻿using System;
-using System.Drawing;
-using System.Collections;
-using System.ComponentModel;
-using DevExpress.XtraReports.UI;
+﻿using DevExpress.XtraReports.UI;
+using System;
 using System.Data;
 
 namespace sotec_pos
@@ -25,7 +22,7 @@ namespace sotec_pos
             tc_masa.DataBindings.Add(binding0);
             XRBinding binding3 = new XRBinding("Text", this.DataSource, "tutar", "{0:c2}");
             tc_tutar.DataBindings.Add(binding3);
-            
+
             GroupField sortField = new GroupField("tutar");
             sortField.SortOrder = XRColumnSortOrder.Descending;
             this.Detail.SortFields.Add(sortField);

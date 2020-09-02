@@ -1,12 +1,5 @@
-﻿using DevExpress.XtraGrid.Views.Tile;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace sotec_pos
@@ -39,7 +32,7 @@ namespace sotec_pos
 
         private void pos_masa_sicak_satis_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void grid_masalar_Click(object sender, EventArgs e)
@@ -57,7 +50,7 @@ namespace sotec_pos
             for (int i = 0; i < tv_masalar.RowCount; i++)
             {
                 dr = tv_masalar.GetDataRow(i);
-                if(dr["secim"].ToString() == "1")
+                if (dr["secim"].ToString() == "1")
                     SQL.set("INSERT INTO urunler_hareket (urun_id, hareket_tipi_parametre_id, miktar, referans_id, birim_fiyat) VALUES (" + dr["urun_id"] + ", 62, " + (secili_miktar * Convert.ToDecimal(dr["miktar"]) * -1).ToString().Replace(',', '.') + ", " + dt.Rows[0][0] + ", 0.0000)");
             }
 

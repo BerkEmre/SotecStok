@@ -1,8 +1,4 @@
-﻿using System;
-using System.Drawing;
-using System.Collections;
-using System.ComponentModel;
-using DevExpress.XtraReports.UI;
+﻿using DevExpress.XtraReports.UI;
 using System.Data;
 
 namespace sotec_pos
@@ -25,7 +21,7 @@ namespace sotec_pos
                 " net_birim_fiyat = (((sk.birim_fiyat - (sk.birim_fiyat / 100 * sk.iskonto_1)) - ((sk.birim_fiyat - (sk.birim_fiyat / 100 * sk.iskonto_1)) / 100 * sk.iskonto_2)) + (((sk.birim_fiyat - (sk.birim_fiyat / 100 * sk.iskonto_1)) - ((sk.birim_fiyat - (sk.birim_fiyat / 100 * sk.iskonto_1)) / 100 * sk.iskonto_2)) / 100 * u.kdv)) " +
                 " FROM urunler_siparis_kalem sk INNER JOIN urunler u ON u.urun_id = sk.urun_id INNER JOIN parametreler p ON p.parametre_id = u.olcu_birimi_parametre_id WHERE sk.silindi = 0 AND sk.siparis_id = " + siparis_id);
             this.DataSource = dt_siparis_kalem;
-            
+
             XRBinding binding0 = new XRBinding("Text", this.DataSource, "urun_adi", "");
             xrTableCell10.DataBindings.Add(binding0);
             XRBinding binding1 = new XRBinding("Text", this.DataSource, "olcu_birimi", "");

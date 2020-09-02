@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace sotec_pos
@@ -24,7 +18,7 @@ namespace sotec_pos
 
         private void ayarlar_masa_ekle_duzenle_Load(object sender, EventArgs e)
         {
-            if(masa_id != 0)
+            if (masa_id != 0)
             {
                 btn_log_out.Text = "Düzenle";
                 DataTable dt = SQL.get("SELECT * FROM masalar WHERE masa_id = " + masa_id);
@@ -46,7 +40,7 @@ namespace sotec_pos
             }
 
             DataTable dt = SQL.get("SELECT masa_id FROM masalar WHERE silindi = 0 AND masa_adi = '" + tb_masa_adi.Text + "' AND masa_id != " + masa_id);
-            if(dt.Rows.Count > 0)
+            if (dt.Rows.Count > 0)
             {
                 new mesaj("Aynı isimle bir masa kayıtlı!").ShowDialog();
                 return;
