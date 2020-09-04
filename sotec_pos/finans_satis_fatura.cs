@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.XtraReports.UI;
+using System;
 using System.Data;
 using System.Windows.Forms;
 
@@ -9,6 +10,7 @@ namespace sotec_pos
         int secili_fatura_id = 0;
         int cari_id = 0;
         int kalem_adet = 0;
+        string text = "";
 
         public finans_satis_fatura()
         {
@@ -17,7 +19,8 @@ namespace sotec_pos
 
         private void finans_satis_fatura_Load(object sender, EventArgs e)
         {
-            DataTable dt_cari = SQL.get("SELECT * FROM cariler WHERE [cari_tipi_parametre_id] IN (1, 43) AND silindi = 0");
+            try { text = System.IO.File.ReadAllText(@"printer_info.txt").Replace("\n", "").Replace("\r", ""); } catch { text = ""; }
+            DataTable dt_cari = SQL.get("SELECT * FROM cariler WHERE silindi = 0");
             if (dt_cari.Rows.Count <= 0)
             {
                 new mesaj("Cari girmeden fatura giremezsiniz!").ShowDialog();
@@ -274,11 +277,15 @@ namespace sotec_pos
             if (gv_fatura.SelectedRowsCount <= 0)
                 return;
 
-            rp_fatura s = new rp_fatura(Convert.ToInt32(gv_fatura.GetDataRow(gv_fatura.GetSelectedRows()[0])["fatura_id"].ToString()));
+            /*rp_fatura s = new rp_fatura(Convert.ToInt32(gv_fatura.GetDataRow(gv_fatura.GetSelectedRows()[0])["fatura_id"].ToString()));
             s.CreateDocument();
             disa_aktar d = new disa_aktar();
             d.rp_viewer.DocumentSource = s;
-            d.ShowDialog();
+            d.ShowDialog();*/
+
+            rp_fatura s = new rp_fatura(Convert.ToInt32(gv_fatura.GetDataRow(gv_fatura.GetSelectedRows()[0])["fatura_id"].ToString()));
+            ReportPrintTool printTool = new ReportPrintTool(s);
+            try { printTool.Print(text); } catch (Exception ect) { printTool.Print(); }
         }
 
         private void tb_barkod_KeyDown(object sender, KeyEventArgs e)
@@ -312,7 +319,7 @@ namespace sotec_pos
 
         private void C_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DataTable dt_cari = SQL.get("SELECT * FROM cariler WHERE [cari_tipi_parametre_id] IN (1, 43) AND silindi = 0");
+            DataTable dt_cari = SQL.get("SELECT * FROM cariler WHERE silindi = 0");
             if (dt_cari.Rows.Count <= 0)
             {
                 new mesaj("Cari girmeden fatura giremezsiniz!").ShowDialog();

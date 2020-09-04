@@ -72,6 +72,8 @@
             this.tb_sira = new System.Windows.Forms.NumericUpDown();
             this.label12 = new System.Windows.Forms.Label();
             this.cb_sicak_satis = new System.Windows.Forms.CheckBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pb_resim)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_fiyat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmb_kategori_id.Properties)).BeginInit();
@@ -296,7 +298,7 @@
             this.tb_barkod.Font = new System.Drawing.Font("Bahnschrift SemiBold Condensed", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.tb_barkod.Location = new System.Drawing.Point(555, 58);
             this.tb_barkod.Name = "tb_barkod";
-            this.tb_barkod.Size = new System.Drawing.Size(272, 40);
+            this.tb_barkod.Size = new System.Drawing.Size(224, 40);
             this.tb_barkod.TabIndex = 34;
             // 
             // cmb_olcu_birimi
@@ -600,11 +602,51 @@
             this.cb_sicak_satis.UseVisualStyleBackColor = true;
             this.cb_sicak_satis.Visible = false;
             // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.BackColor = System.Drawing.Color.DimGray;
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.GreenYellow;
+            this.button2.FlatAppearance.BorderSize = 5;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Bahnschrift Condensed", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.button2.ForeColor = System.Drawing.Color.GreenYellow;
+            this.button2.Location = new System.Drawing.Point(787, 58);
+            this.button2.Margin = new System.Windows.Forms.Padding(5);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(40, 40);
+            this.button2.TabIndex = 66;
+            this.button2.Text = "?";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button3
+            // 
+            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button3.BackColor = System.Drawing.Color.DimGray;
+            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.GreenYellow;
+            this.button3.FlatAppearance.BorderSize = 5;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Bahnschrift Condensed", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.button3.ForeColor = System.Drawing.Color.GreenYellow;
+            this.button3.Location = new System.Drawing.Point(293, 492);
+            this.button3.Margin = new System.Windows.Forms.Padding(5);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(121, 41);
+            this.button3.TabIndex = 67;
+            this.button3.Text = "ETİKET";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // urun_ekle_duzenle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(841, 543);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.cb_sicak_satis);
             this.Controls.Add(this.tb_sira);
             this.Controls.Add(this.label12);
@@ -707,5 +749,7 @@
         private System.Windows.Forms.NumericUpDown tb_sira;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.CheckBox cb_sicak_satis;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
     }
 }

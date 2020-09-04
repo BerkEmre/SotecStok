@@ -507,7 +507,7 @@
             this.grid_fatura_kalem.Location = new System.Drawing.Point(9, 261);
             this.grid_fatura_kalem.MainView = this.gv_fatura_kalem;
             this.grid_fatura_kalem.Name = "grid_fatura_kalem";
-            this.grid_fatura_kalem.Size = new System.Drawing.Size(705, 415);
+            this.grid_fatura_kalem.Size = new System.Drawing.Size(705, 390);
             this.grid_fatura_kalem.TabIndex = 51;
             this.grid_fatura_kalem.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gv_fatura_kalem});

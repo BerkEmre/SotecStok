@@ -184,14 +184,14 @@
             this.lbl_masa_adi,
             this.pb_logo});
             this.PageHeader.Dpi = 254F;
-            this.PageHeader.HeightF = 630.125F;
+            this.PageHeader.HeightF = 778.2916F;
             this.PageHeader.Name = "PageHeader";
             // 
             // xrLabel5
             // 
             this.xrLabel5.Dpi = 254F;
             this.xrLabel5.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.xrLabel5.LocationFloat = new DevExpress.Utils.PointFloat(4.037221E-05F, 516.6249F);
+            this.xrLabel5.LocationFloat = new DevExpress.Utils.PointFloat(0F, 664.7916F);
             this.xrLabel5.Name = "xrLabel5";
             this.xrLabel5.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
             this.xrLabel5.SizeF = new System.Drawing.SizeF(199.4978F, 50F);
@@ -204,7 +204,7 @@
             // 
             this.xrLabel7.Dpi = 254F;
             this.xrLabel7.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.xrLabel7.LocationFloat = new DevExpress.Utils.PointFloat(199.4978F, 516.6249F);
+            this.xrLabel7.LocationFloat = new DevExpress.Utils.PointFloat(199.4976F, 664.7916F);
             this.xrLabel7.Name = "xrLabel7";
             this.xrLabel7.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
             this.xrLabel7.SizeF = new System.Drawing.SizeF(26.14F, 50F);
@@ -217,7 +217,7 @@
             // 
             this.lbl_fis_no.Dpi = 254F;
             this.lbl_fis_no.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lbl_fis_no.LocationFloat = new DevExpress.Utils.PointFloat(225.6378F, 516.6249F);
+            this.lbl_fis_no.LocationFloat = new DevExpress.Utils.PointFloat(225.6376F, 664.7916F);
             this.lbl_fis_no.Name = "lbl_fis_no";
             this.lbl_fis_no.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
             this.lbl_fis_no.SizeF = new System.Drawing.SizeF(374.3622F, 50F);
@@ -229,7 +229,7 @@
             // xrTable2
             // 
             this.xrTable2.Dpi = 254F;
-            this.xrTable2.LocationFloat = new DevExpress.Utils.PointFloat(0.0002018611F, 566.625F);
+            this.xrTable2.LocationFloat = new DevExpress.Utils.PointFloat(0F, 714.7916F);
             this.xrTable2.Name = "xrTable2";
             this.xrTable2.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow2});
@@ -302,7 +302,7 @@
             // 
             this.xrLabel1.Dpi = 254F;
             this.xrLabel1.Font = new System.Drawing.Font("Bahnschrift", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 301.6249F);
+            this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 449.7916F);
             this.xrLabel1.Name = "xrLabel1";
             this.xrLabel1.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
             this.xrLabel1.SizeF = new System.Drawing.SizeF(599.9999F, 65F);
@@ -315,7 +315,7 @@
             // 
             this.lbl_acan_kullanici.Dpi = 254F;
             this.lbl_acan_kullanici.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lbl_acan_kullanici.LocationFloat = new DevExpress.Utils.PointFloat(225.6376F, 466.6249F);
+            this.lbl_acan_kullanici.LocationFloat = new DevExpress.Utils.PointFloat(225.6374F, 614.7916F);
             this.lbl_acan_kullanici.Name = "lbl_acan_kullanici";
             this.lbl_acan_kullanici.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
             this.lbl_acan_kullanici.SizeF = new System.Drawing.SizeF(374.3622F, 50F);
@@ -328,7 +328,7 @@
             // 
             this.lbl_fis_acilis_tarihi.Dpi = 254F;
             this.lbl_fis_acilis_tarihi.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lbl_fis_acilis_tarihi.LocationFloat = new DevExpress.Utils.PointFloat(225.6376F, 416.6249F);
+            this.lbl_fis_acilis_tarihi.LocationFloat = new DevExpress.Utils.PointFloat(225.6374F, 564.7916F);
             this.lbl_fis_acilis_tarihi.Name = "lbl_fis_acilis_tarihi";
             this.lbl_fis_acilis_tarihi.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
             this.lbl_fis_acilis_tarihi.SizeF = new System.Drawing.SizeF(374.3622F, 50F);
@@ -341,7 +341,7 @@
             // 
             this.xrLabel8.Dpi = 254F;
             this.xrLabel8.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.xrLabel8.LocationFloat = new DevExpress.Utils.PointFloat(199.4976F, 466.6249F);
+            this.xrLabel8.LocationFloat = new DevExpress.Utils.PointFloat(199.4974F, 614.7916F);
             this.xrLabel8.Name = "xrLabel8";
             this.xrLabel8.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
             this.xrLabel8.SizeF = new System.Drawing.SizeF(26.14F, 50F);
@@ -354,7 +354,7 @@
             // 
             this.xrLabel6.Dpi = 254F;
             this.xrLabel6.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.xrLabel6.LocationFloat = new DevExpress.Utils.PointFloat(199.4976F, 416.6249F);
+            this.xrLabel6.LocationFloat = new DevExpress.Utils.PointFloat(199.4974F, 564.7916F);
             this.xrLabel6.Name = "xrLabel6";
             this.xrLabel6.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
             this.xrLabel6.SizeF = new System.Drawing.SizeF(26.14F, 50F);
@@ -367,7 +367,7 @@
             // 
             this.xrLabel4.Dpi = 254F;
             this.xrLabel4.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.xrLabel4.LocationFloat = new DevExpress.Utils.PointFloat(0F, 466.6249F);
+            this.xrLabel4.LocationFloat = new DevExpress.Utils.PointFloat(0F, 614.7916F);
             this.xrLabel4.Name = "xrLabel4";
             this.xrLabel4.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
             this.xrLabel4.SizeF = new System.Drawing.SizeF(199.4978F, 50F);
@@ -380,7 +380,7 @@
             // 
             this.xrLabel2.Dpi = 254F;
             this.xrLabel2.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.xrLabel2.LocationFloat = new DevExpress.Utils.PointFloat(0F, 416.6249F);
+            this.xrLabel2.LocationFloat = new DevExpress.Utils.PointFloat(0F, 564.7916F);
             this.xrLabel2.Name = "xrLabel2";
             this.xrLabel2.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
             this.xrLabel2.SizeF = new System.Drawing.SizeF(199.4978F, 50F);
@@ -393,7 +393,7 @@
             // 
             this.lbl_masa_adi.Dpi = 254F;
             this.lbl_masa_adi.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lbl_masa_adi.LocationFloat = new DevExpress.Utils.PointFloat(4.037221E-05F, 366.6249F);
+            this.lbl_masa_adi.LocationFloat = new DevExpress.Utils.PointFloat(0F, 514.7916F);
             this.lbl_masa_adi.Name = "lbl_masa_adi";
             this.lbl_masa_adi.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
             this.lbl_masa_adi.SizeF = new System.Drawing.SizeF(599.9998F, 50.00001F);
@@ -408,7 +408,7 @@
             this.pb_logo.ImageAlignment = DevExpress.XtraPrinting.ImageAlignment.MiddleCenter;
             this.pb_logo.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
             this.pb_logo.Name = "pb_logo";
-            this.pb_logo.SizeF = new System.Drawing.SizeF(599.9998F, 301.6249F);
+            this.pb_logo.SizeF = new System.Drawing.SizeF(599.9998F, 449.7916F);
             this.pb_logo.Sizing = DevExpress.XtraPrinting.ImageSizeMode.ZoomImage;
             // 
             // ReportFooter

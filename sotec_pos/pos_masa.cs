@@ -33,7 +33,7 @@ namespace sotec_pos
                 this.Close();
             }
 
-            try { text = System.IO.File.ReadAllText(@"printer_info.txt"); } catch { text = ""; }
+            try { text = System.IO.File.ReadAllText(@"printer_info.txt").Replace("\n", "").Replace("\r", ""); } catch { text = ""; }
 
             DataTable dt_masa = SQL.get("SELECT masa_adi, masa_id FROM masalar WHERE masa_id = " + masa_id);
             lbl_kullanici.Text = SQL.ad + " " + SQL.soyad;
@@ -353,11 +353,11 @@ namespace sotec_pos
                             hedef_ids.Add(Convert.ToInt32(dr["hedef_id"]));
                             if (SQL.get("SELECT * FROM adisyon_kalem ak INNER JOIN urunler u ON u.urun_id = ak.urun_id AND u.hedef_id = " + dr["hedef_id"] + " WHERE ak.silindi = 0 AND ak.durum_parametre_id = 51 AND ak.adisyon_id = " + dr["adisyon_id"]).Rows.Count > 0)
                             {
-                                rp_hedefte_yazdir s = new rp_hedefte_yazdir(Convert.ToInt32(dr["adisyon_id"]), Convert.ToInt32(dr["hedef_id"]));
+                                /*rp_hedefte_yazdir s = new rp_hedefte_yazdir(Convert.ToInt32(dr["adisyon_id"]), Convert.ToInt32(dr["hedef_id"]));
                                 ReportPrintTool printTool = new ReportPrintTool(s);
                                 try { printTool.Print(dt_hedef.Rows[0]["yazici"].ToString()); } catch { printTool.Print(); }
                                 SQL.set("UPDATE adisyon_kalem SET durum_parametre_id = 55 WHERE adisyon_kalem_id IN (SELECT adisyon_kalem_id FROM adisyon_kalem ak INNER JOIN urunler u ON u.urun_id = ak.urun_id AND u.hedef_id = " + dr["hedef_id"] + " WHERE ak.adisyon_id = " + dr["adisyon_id"] + " AND ak.silindi = 0)");
-                            }
+                           */ }
                         }
                     }
                     else

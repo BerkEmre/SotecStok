@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.XtraReports.UI;
+using System;
 using System.Data;
 using System.IO;
 using System.Windows.Forms;
@@ -8,6 +9,7 @@ namespace sotec_pos
     public partial class urun_ekle_duzenle : Form
     {
         int urun_id;
+        string text = "";
 
         string tasinacakDosya = "", tasinacakDosyaIsmi = "", dosyaninTasinacagiKlasor = "";
 
@@ -25,6 +27,8 @@ namespace sotec_pos
 
         private void urun_ekle_duzenle_Load(object sender, EventArgs e)
         {
+            try { text = System.IO.File.ReadAllText(@"printer_info_etiket.txt").Replace("\n", "").Replace("\r", ""); } catch { text = ""; }
+
             DataTable dt_cinsiyet = SQL.get("SELECT * FROM parametreler WHERE silindi = 0 AND tip = 'olcu_birimi'");
             cmb_olcu_birimi.Properties.DataSource = dt_cinsiyet;
             cmb_olcu_birimi.EditValue = dt_cinsiyet.Rows[0]["parametre_id"];
@@ -84,6 +88,20 @@ namespace sotec_pos
         {
             cb_sicak_satis.Enabled = cb_receteli.Checked;
             if (!cb_receteli.Checked) cb_sicak_satis.Checked = false;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Random _random = new Random();
+            tb_barkod.Text = _random.Next(100000000, 999999999).ToString();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            rp_hedefte_yazdir s = new rp_hedefte_yazdir(tb_urun_adi.Text, tb_barkod.Text);
+            ReportPrintTool printTool = new ReportPrintTool(s);
+            try { printTool.Print(text); } catch { printTool.Print(); }
+            //printTool.ShowPreviewDialog();
         }
 
         private void btn_resim_Click(object sender, EventArgs e)

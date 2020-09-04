@@ -9,12 +9,14 @@ namespace sotec_pos
     {
         bool geri_donuslu;
         public string yazici = "";
+        string dosya_yolu = "";
 
-        public ayarlar_yazici_sec(bool geri_donuslu)
+        public ayarlar_yazici_sec(bool geri_donuslu, string dosya_yolu)
         {
             InitializeComponent();
 
             this.geri_donuslu = geri_donuslu;
+            this.dosya_yolu = dosya_yolu;
 
             DataTable dt = new DataTable();
             dt.Columns.Add("yazici", typeof(String));
@@ -43,7 +45,7 @@ namespace sotec_pos
             }
             else
             {
-                string dosya_yolu = @"printer_info.txt";
+                //dosya_yolu = @"printer_info.txt";
 
                 if (File.Exists(dosya_yolu))
                     File.Delete(dosya_yolu);

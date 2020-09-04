@@ -51,7 +51,7 @@ namespace sotec_pos
 
         private void button2_Click(object sender, EventArgs e)
         {
-            using (var form = new ayarlar_yazici_sec(true))
+            using (var form = new ayarlar_yazici_sec(true, ""))
             {
                 var result = form.ShowDialog();
                 if (result == DialogResult.OK)

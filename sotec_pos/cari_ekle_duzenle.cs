@@ -52,7 +52,7 @@ namespace sotec_pos
                 new mesaj("Cari Giriniz!").ShowDialog();
                 return;
             }
-            if (tb_vergi_no.Text.Length != 10 || tb_vergi_no.Text.Length != 10)
+            if (tb_vergi_no.Text.Length != 10 && tb_vergi_no.Text.Length != 11)
             {
                 new mesaj("Vergi No 10 veya 11 haneli olmalıdı!").ShowDialog();
                 return;

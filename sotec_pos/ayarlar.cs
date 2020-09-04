@@ -27,6 +27,9 @@ namespace sotec_pos
             try { text = System.IO.File.ReadAllText(@"firma_bilgi.txt"); } catch { text = ""; }
             tb_isletme.Text = text;
 
+            try { text = System.IO.File.ReadAllText(@"printer_info_etiket.txt"); } catch { text = ""; }
+            textBox1.Text = text;
+
             try { pb_logo.ImageLocation = "firma_logo.png"; } catch { }
 
             DataTable dt_hedefler = SQL.get("SELECT * FROM hedef WHERE silindi = 0");
@@ -100,7 +103,7 @@ namespace sotec_pos
 
         private void button4_Click(object sender, EventArgs e)
         {
-            ayarlar_yazici_sec a = new ayarlar_yazici_sec(false);
+            ayarlar_yazici_sec a = new ayarlar_yazici_sec(false, "printer_info.txt");
             a.FormClosing += A_FormClosing2;
             a.ShowDialog();
         }
@@ -110,6 +113,9 @@ namespace sotec_pos
             string text = "";
             try { text = System.IO.File.ReadAllText(@"printer_info.txt"); } catch { text = ""; }
             tb_yazici.Text = text;
+            text = "";
+            try { text = System.IO.File.ReadAllText(@"printer_info_etiket.txt"); } catch { text = ""; }
+            textBox1.Text = text;
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -198,6 +204,13 @@ namespace sotec_pos
                     gridMasaKapat.DataSource = dt_masa_kapat;
                 }
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ayarlar_yazici_sec a = new ayarlar_yazici_sec(false, "printer_info_etiket.txt");
+            a.FormClosing += A_FormClosing2;
+            a.ShowDialog();
         }
 
         private void button8_Click(object sender, EventArgs e)
